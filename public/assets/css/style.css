@@ -1,0 +1,44 @@
+/* /////// start soughtProfile.html.twig ////// */
+
+#profileCard {
+    border: 1px solid black;
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+
+    position:fixed;
+    z-index:10;
+    left:20%;
+    top:auto;
+    background:#e74c3c;
+    height: 8em;
+}
+
+.card-pseudo, .card-sentence {
+    display: block;
+    align-content: center;
+    pointer-events: none; /* to allow profileCard pointer in JS */
+}
+
+.rightMove {
+    animation:.5s slideRight ease-in forwards;
+    transition-delay:0;
+}
+
+.leftMove {
+    animation:.5s slideLeft ease-in forwards;
+    transition-delay:0;
+}
+
+@keyframes slideRight {
+	from {left:30%;}
+	to {left:100%;}
+}
+
+@keyframes slideLeft {
+	from {left:30%;}
+	to {left:-65%;}
+}
+
+/* /////// end soughtProfile.html.twig ////// */

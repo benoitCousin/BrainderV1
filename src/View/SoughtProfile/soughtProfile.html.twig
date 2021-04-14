@@ -1,0 +1,69 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Affichage des profils{% endblock %}
+
+{% block content %}
+    <h1>Profil trouvé</h1>
+    <br>
+        <div id="profileCard">
+            <h5 class="card-pseudo">{{ session.resultResearch.0.pseudo }}</h5>
+            <p class="card-sentence">{{ session.resultResearch.0.catchPhrase }}</p>
+        </div>
+    {# to transfer twig variables into JS code by DOM #}
+    <input type="hidden" id="profile" value={{session.resultResearch.0.id}}>
+    <input type="hidden" id="searchingId" value={{session.userId}}>  
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        const profileCard = document.querySelector('#profileCard');
+        const profileId = document.getElementById('profile').value;
+        const searchingId = document.getElementById('searchingId').value;
+
+        if (profileId != '') {
+            console.log(profileId);
+            console.log(searchingId);
+
+            let startX = 0; // start position cursor
+            let between = 0; // distance between start and final position cursor
+            const distance = 100; // 100px swipe for action
+            let directionCursor;
+
+            // When mouse down in the card
+            profileCard.addEventListener("mousedown", function(event) {
+                startX = event.clientX;
+                console.log(startX);
+            }, false);
+
+            // When mouse up in the card
+            profileCard.addEventListener("mouseup", function(event) {
+                between = event.clientX - startX;
+                console.log(between);
+
+                // direction detection
+                if (between < 0) {
+                    directionCursor = 'left';
+                } else {
+                    directionCursor = 'right';
+                }
+
+                // swipe effect
+                if(Math.abs(between) >= distance && directionCursor == "left" && profileCard.getAttribute("class") != "leftMove") {
+                    profileCard.setAttribute("class", "leftMove");
+                    setTimeout(() => {
+                        document.location.href="/soughtProfile/matchUpdate/"+searchingId+"/"+profileId+"/refuse";
+                    }, 1000);
+                }
+                if(Math.abs(between) >= distance && directionCursor == "right" && profileCard.getAttribute("class") != "rightMove") {
+                    profileCard.setAttribute("class", "rightMove");
+                    setTimeout(() => {
+                        document.location.href="/soughtProfile/matchUpdate/"+searchingId+"/"+profileId+"/accept";
+                    }, 1000);
+                }
+            }, false);
+        } else {
+            alert('Vous avez vu tous les profils de la recherche.');
+            // go to US63: accepted profiles list
+        }
+    </script>
+{% endblock %}
