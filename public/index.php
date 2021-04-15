@@ -7,6 +7,10 @@
  * Time: 14:01
  */
 
+if (session_status() !== 2) {
+    session_start();
+}
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 if (getenv('ENV') === false) {

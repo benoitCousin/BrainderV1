@@ -9,7 +9,10 @@ class SoughtProfileController extends AbstractController
     // principal display to test US57:
     public function resultResearch()
     {
-        session_destroy();
+
+        if (session_status() === 2) {  // to know if there is already an active session
+            session_destroy();
+        }
         session_start();
         $_SESSION['userId'] = 6; // I am the user test with id = 6 which have done the research
         $userID = $_SESSION['userId'];
