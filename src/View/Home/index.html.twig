@@ -1,5 +1,88 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+    <style>
+        *::selection{
+            background-color: lightgreen;
+            color: orange;
+        }
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        #popup{
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 45%; 
+            height: 50%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8); 
+            }
+        #popupContent{
+             margin: auto;
+            padding: 10px;
+            border: 6px solid green;;
+            width: 45%;
+            height: 50%;
+            }
+        #popupContent form *{
+            display: block;
+            margin: auto;
+            }
+       
+        #popupContent form input{
+            font-size: 20px;
+            outline: none;
+          
+            border-top-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding: 1em;
+        }
+-
+        #popupContent form input[type="submit"]{
+            cursor: pointer;
+            background: limegreen;
+            color: darkred;
+        }
+        #popupContent form input::placeholder{
+            color: darkred;
+            text-align: center;
+            font-family: verdana;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
     <h1>Hello Wilder !</h1>
+    <button id="show_popup">Show popup</button>
+        <div id="popup">
+            <div id="popupContent">
+                <form action="connect/verify" method="POST" >
+                    <input type="email" name="email" placeholder="email" required/><br/>
+                    <input type="password" name="password" placeholder="mot de passe" required/><br/>
+                    <input type="submit" name="register" value="C'est parti"/></form><br/>
+                </form>
+            </div>
+        </div>                
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        var popup = document.getElementById('popup');
+        var show_popup = document.getElementById("show_popup");
+       
+        show_popup.onclick = function(){
+            popup.style.display = "block";
+        }
+        
+        window.onclick = function(event){ /*fermeture si ???*/
+            if(event.target == popup){
+                popup.style.display = "none";
+            }
+        }
+    </script>
 {% endblock %}
