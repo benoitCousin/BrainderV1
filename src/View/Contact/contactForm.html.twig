@@ -1,0 +1,52 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+    
+    <form id="contactForm" action="/contact/create" method="POST">
+        <h1>Contactez notre administration:</h1>
+
+        <p>
+            <label for="subject">Sujet</label>
+            <input id="subject" name="subject" placeholder="Ecrivez l'objet de la demande" required/>
+        </p>
+
+        <p>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="10" cols="120" required></textarea>
+        </p>
+
+        <p>
+            <input id="contactButton" type="submit" value="Envoyer"/>
+        </p>
+
+        <input type="hidden" id="profilId" name="profilId" value={{userId}}>
+        <input type="hidden" id="signalId" name="signalId" value={{signalId}}>
+        <input type="hidden" id="signalPseudo" name="signalPseudo" value={{signalPseudo}}>
+ 
+    </form>
+    
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        const subject = document.querySelector('#subject');
+        const signalId = document.getElementById('signalId').value;
+        const signalPseudo = document.getElementById('signalPseudo').value;
+        if (signalId != "") {
+            subject.setAttribute("value", "Signalement de "+signalPseudo+" (n°"+signalId+")");
+            subject.setAttribute("disabled", "");
+        } 
+
+        const message = "Merci de nous avoir contactés, votre demande sera traitée dans les plus brefs délais."
+
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            alert(message);
+            if (signalId != "") {
+                subject.removeAttribute("disabled");
+            }
+        });
+
+    </script>
+{% endblock %}

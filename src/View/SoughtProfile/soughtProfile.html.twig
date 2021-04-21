@@ -3,14 +3,17 @@
 {% block title %}Affichage des profils{% endblock %}
 
 {% block content %}
-    <h1>Profil trouvé</h1>
-    <br>
-        <div id="profileCard">
-            <h5 class="card-pseudo">{{ session.resultResearch.0.pseudo }}</h5>
-            <p class="card-sentence">{{ session.resultResearch.0.catchPhrase }}</p>
-        </div>
+    <div id="soughtProfilesContainer">
+        <h1>Profil trouvé</h1>
+        <button onclick="signalConfirm()">Signaler ce profil !</button>
+    </div>
+    <div id="profileCard">
+        <h5 class="card-pseudo">{{ session.resultResearch.0.pseudo }}</h5>
+        <p class="card-sentence">{{ session.resultResearch.0.catchPhrase }}</p>
+    </div>
     {# to transfer twig variables into JS code by DOM #}
     <input type="hidden" id="profile" value={{session.resultResearch.0.id}}>
+    <input type="hidden" id="pseudo" value={{session.resultResearch.0.pseudo}}>
     <input type="hidden" id="searchingId" value={{session.userId}}>  
 {% endblock %}
 
@@ -18,6 +21,7 @@
     <script type="text/javascript">
         const profileCard = document.querySelector('#profileCard');
         const profileId = document.getElementById('profile').value;
+        const profilePseudo = document.getElementById('pseudo').value;
         const searchingId = document.getElementById('searchingId').value;
 
         if (profileId != '') {
@@ -64,6 +68,13 @@
         } else {
             alert('Vous avez vu tous les profils de la recherche.');
             // go to US63: accepted profiles list
+        }
+
+        function signalConfirm() {
+            let signalConf = confirm("Vous êtes sur le point de procéder au signalement de ce profil. Confirmez-vous ce signalement ?");
+            if (signalConf) {
+                document.location.href="/contact/signal/"+profileId+"/"+profilePseudo;
+            }
         }
     </script>
 {% endblock %}

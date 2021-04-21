@@ -1,5 +1,11 @@
 /* /////// start soughtProfile.html.twig ////// */
 
+#soughtProfilesContainer {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px;
+}
+
 #profileCard {
     border: 1px solid black;
     margin: 0 auto;
@@ -12,7 +18,7 @@
     left:20%;
     top:auto;
     background:#e74c3c;
-    height: 8em;
+    height: 20em;
 }
 
 .card-pseudo, .card-sentence {
@@ -42,3 +48,31 @@
 }
 
 /* /////// end soughtProfile.html.twig ////// */
+
+
+/* /////// start contactForm.html.twig ////// */
+
+#contactForm {
+    width: 1000px;
+    border: 1px solid black;
+    padding: 100px;
+    background-color: blanchedalmond;
+}
+
+#contactForm label {
+    display: inline-block;
+    width: 100px;
+}
+
+#contactForm p {
+    display: flex;
+    align-content: flex-start;
+    margin-top: 20px;
+}
+
+#contactButton {
+    width: 200px;
+    margin-left: 100px;
+}
+
+/* /////// end contactForm.html.twig ////// */
