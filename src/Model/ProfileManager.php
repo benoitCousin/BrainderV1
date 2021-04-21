@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class InscriptionManager extends AbstractManager
+class ProfileManager extends AbstractManager
 {
     public const TABLE = 'profiles';
 
@@ -31,5 +31,17 @@ class InscriptionManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    public function update($email, $password, $birthday, $id): bool
+    {
+        $statement = $this->pdo->prepare("UPDATE  profiles SET email=:email, pswd=:pswd, 
+            birthday=:birthday WHERE id =:id");
+        $statement->bindValue(':email', $email, \PDO::PARAM_STR);
+        $statement->bindValue(':pswd', $password, \PDO::PARAM_STR);
+        $statement->bindParam(':birthday', $birthday, \PDO::PARAM_STR);
+        $statement->bindParam(':id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
     }
 }

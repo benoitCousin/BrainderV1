@@ -13,11 +13,17 @@ class InscriptionController extends AbstractController
             $firstName = $_POST['Firstname'];
             $email = $_POST['mail'];
             $sexe = $_POST['sexe'];
-            $password = $_POST['password'];
+            $password = $_POST['pswd'];
             $birthday = $_POST['birthday'];
+
+
+
 
             $manager = new InscriptionManager();
             $manager->insert($lastName, $firstName, $email, $password, $sexe, $birthday);
+            $userId = $manager->selectOne($email, $password);//recuperation de l'id.
+            $_SESSION ['userId'] = $userId ['id'];
+                header('location:/Profile/show');
         }
         return $this->twig->render('Inscription/form.html.twig');
     }

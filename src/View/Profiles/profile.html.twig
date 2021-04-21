@@ -3,16 +3,16 @@
 {% block content %}
 
 <div align="center">
-	<h2>Inscription</h2>
+	<h2>Votre Profil</h2>
 	<br/><br/>
-<form method="POST" action="create">
+<form method="POST" action="update">
 	<table>
 		<tr>
 			<td>
 				<label for ="Firstname">Firstname :</label>
 			</td>
 			<td text align="left">
-				<input type="text" placeholder="Prenom" id="firstname" name="Firstname"/>
+				<input type="text" placeholder="Nom" value= "{{user.firstName}}" id="firstname" name="Firstname"/>
 			</td>
 		</tr>
  
@@ -21,7 +21,7 @@
 				<label for ="Lastname">Lastname :</label>
 			</td>
 			<td text align="left">
-				<input type="text" placeholder=" Nom" id="Lastname" name="Lastname"/>
+				<input type="text" placeholder="Prénom" value= "{{user.lastName}}" id="Lastname" name="Lastname"/>
 			</td>
  
 			<tr>
@@ -29,7 +29,7 @@
                     <label for ="Birthday">Birthday :</label>
                 </td>
                 <td align="left">
-                    <input type="date" placeholder="Date d'anniversaire" id="birthday" name="birthday"/>
+                    <input type="date" placeholder="Date d'anniversaire" value= "{{user.birthday}}" id="birthday" name="birthday"/>
                 </td>
         <tr>
  
@@ -65,19 +65,13 @@
 							<input type="password" placeholder="Confirmation de password" id="password" name="pswd"/>
 						</td>
  
-		<tr>
-				<td>
-					<label for ="Sexe">sexe :</label>
-				</td>
-				<td align="left">
-					<input type="radio" name="sexe" value="0" checked> Homme <INPUT type="radio" name="sexe" value="1"> Femme
-				</td>
+		
  
 		<tr>
 			<td></td>
 			<td align="center">
 				<br/>
-				<input type="submit" name"submit" name="forminscription" value="Je valide"/>
+				<input type="submit" name"submit" name="forminscription" value="enregister"/>
 			</td>
 		</tr>
 		</table>
