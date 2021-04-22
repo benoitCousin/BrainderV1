@@ -8,13 +8,13 @@
         <button onclick="signalConfirm()">Signaler ce profil !</button>
     </div>
     <div id="profileCard">
-        <h5 class="card-pseudo">{{ session.resultResearch.0.pseudo }}</h5>
-        <p class="card-sentence">{{ session.resultResearch.0.catchPhrase }}</p>
+        <h5 class="card-pseudo">{{ resultResearch.0.pseudo }}</h5>
+        <p class="card-sentence">{{ resultResearch.0.catchPhrase }}</p>
     </div>
     {# to transfer twig variables into JS code by DOM #}
-    <input type="hidden" id="profile" value={{session.resultResearch.0.id}}>
-    <input type="hidden" id="pseudo" value={{session.resultResearch.0.pseudo}}>
-    <input type="hidden" id="searchingId" value={{session.userId}}>  
+    <input type="hidden" id="profile" value={{resultResearch.0.id}}>
+    <input type="hidden" id="pseudo" value={{resultResearch.0.pseudo}}>
+    <input type="hidden" id="searchingId" value={{userId}}>
 {% endblock %}
 
 {% block javascript %}

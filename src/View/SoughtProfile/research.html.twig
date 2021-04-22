@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Recherche{% endblock %}
+
+{% block content %}
+    <h1>Recherche de profils</h1>
+
+    <form action="/soughtProfile/researchDisplay" method="POST">
+        <p>Choisir le genre :</p>
+        <p>
+            <input type="radio" id="male" name="gender" value="0">
+            <label for="male">Homme</label>
+        </p>
+        <p>
+            <input type="radio" id="female" name="gender" value="1">
+            <label for="female">Femme</label>
+        <p>
+        <input type="submit" value="rechercher" />
+    </form>
+
+    {% if errors is not empty %}
+        <h4>Recherche non valide :</h4>
+        {% for error in errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    {% endif %}
+    
+{% endblock %}

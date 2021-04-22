@@ -6,20 +6,18 @@ use App\Model\SoughtProfileManager;
 
 class SoughtProfileController extends AbstractController
 {
-    // principal display to test US57:
     public function resultResearch()
     {
-
-        if (session_status() === 2) {  // to know if there is already an active session
-            session_destroy();
-        }
-        session_start();
-        $_SESSION['userId'] = 6; // I am the user test with id = 6 which have done the research
+        $soughtGender = $_SESSION['soughtGender'];
         $userID = $_SESSION['userId'];
         $profileManager = new SoughtProfileManager();
-        $result = $profileManager->research($userID);
-        $_SESSION['resultResearch'] = $result;
-        return $this->twig->render('SoughtProfile/soughtProfile.html.twig', ['session' => $_SESSION]);
+        $resultResearch = $profileManager->research($userID, $soughtGender);
+        $_SESSION['resultResearch'] = $resultResearch;
+
+        return $this->twig->render('SoughtProfile/soughtProfile.html.twig', [
+            'resultResearch' => $resultResearch,
+            'userId' => $userID
+        ]);
     }
 
     public function matchUpdate(int $searchingId, int $foundId, string $statusSearching)
@@ -33,11 +31,31 @@ class SoughtProfileController extends AbstractController
             $profileManager->insertMatch($searchingId, $foundId, $statusSearching);
         }
         array_shift($_SESSION['resultResearch']);
-        header('Location:/soughtProfile/profileDisplay/');
+        $resultResearch = $_SESSION['resultResearch'];
+
+        return $this->twig->render('SoughtProfile/soughtProfile.html.twig', [
+            'resultResearch' => $resultResearch,
+            'userId' => $searchingId
+        ]);
     }
 
-    public function profileDisplay()
+    public function researchDisplay()
     {
-        return $this->twig->render('SoughtProfile/soughtProfile.html.twig', ['session' => $_SESSION]);
+        $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!isset($_POST['gender'])) {
+                $errors[] = "Veuillez choisir le genre à rechercher.";
+            }
+
+            if (empty($errors)) {
+                $data = array_map('trim', $_POST);
+
+                $_SESSION['soughtGender'] = htmlentities($data['gender']);
+                header('Location:/soughtProfile/resultResearch/ ');
+            }
+        }
+
+        return $this->twig->render('SoughtProfile/research.html.twig', ['errors' => $errors]);
     }
 }

@@ -44,10 +44,12 @@ class SoughtProfileManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function research(int $userID) // simulate a research with a lot of profiles to test US57 // my id test = 6
+    public function research(int $userID, int $gender)
     {
-        $query = 'SELECT id, pseudo, catchPhrase FROM profiles WHERE id != ' . $userID . ';';
+        $query = 'SELECT id, pseudo, catchPhrase FROM profiles 
+            WHERE id != ' . $userID . ' AND gender = ' . $gender . ';';
         $statement = $this->pdo->query($query);
+
         return $statement->fetchAll();
     }
 }
