@@ -1,5 +1,6 @@
 body
 {
+
  background-color: #d45b5b;
  height: 100%;
  width: 100%;
@@ -82,6 +83,8 @@ body
 }
 .logo
 {
+
+ background-color: #d45b5b;
  border-radius: 10%;
  border:5px solid #F9F8F8;
  box-shadow: 10px 10px 0 #F3DE8A, 
@@ -200,8 +203,8 @@ img:nth-child(5) {
 ==========================================================*/
 
 .navbar {
- font-size: 18px;
- background-image: linear-gradient(white 0%, #F3DE8A   100%);
+ font-size: 20px;
+ background-image: linear-gradient(#F3DE8A 70%, #F9F8F8   100%);
  padding-bottom: 10px;
  position: fixed;
  width: 100%;
@@ -219,6 +222,8 @@ img:nth-child(5) {
 .main-nav li {
 text-align: center;
 margin: 15px auto;
+font-weight: bold;
+
 }
 
 
