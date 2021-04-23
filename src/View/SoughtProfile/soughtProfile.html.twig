@@ -9,8 +9,21 @@
         <button onclick="signalConfirm()">Signaler ce profil !</button>
     </div>
     <div id="profileCard">
+
         <h5 class="card-pseudo">{{ resultResearch.0.pseudo }}</h5>
         <p class="card-sentence">{{ resultResearch.0.catchPhrase }}</p>
+    
+        
+ 
+
+        <div class= "contentimg">
+
+            {% for img in resultResearch.0.img_nom %}
+                <div class="imgProfile"> <img class="imgcard"src="/assets/images/profile/{{ img }}" alt=""> </div>
+            {% endfor %}
+                
+        </div>
+
     </div>
     {# to transfer twig variables into JS code by DOM #}
     <input type="hidden" id="profile" value={{resultResearch.0.id}}>

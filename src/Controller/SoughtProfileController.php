@@ -12,6 +12,18 @@ class SoughtProfileController extends AbstractController
         $userID = $_SESSION['userId'];
         $profileManager = new SoughtProfileManager();
         $resultResearch = $profileManager->research($userID, $soughtGender);
+
+        // aggregate all pictures name in an array by profile
+        for ($i = count($resultResearch) - 1; $i > 0; $i--) {
+            if ($resultResearch[$i]['id'] == $resultResearch[$i - 1]['id']) {
+                $resultResearch[$i - 1]['img_nom'] .= ' ' . $resultResearch[$i]['img_nom'];
+                array_splice($resultResearch, $i, 1);
+            } else {
+                $resultResearch[$i]['img_nom'] = explode(" ", $resultResearch[$i]['img_nom']);
+            }
+        }
+        $resultResearch[0]['img_nom'] = explode(" ", $resultResearch[0]['img_nom']);
+
         $_SESSION['resultResearch'] = $resultResearch;
 
         return $this->twig->render('SoughtProfile/soughtProfile.html.twig', [
