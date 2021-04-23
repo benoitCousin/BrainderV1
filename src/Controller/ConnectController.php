@@ -22,7 +22,6 @@ class ConnectController extends AbstractController
             $email = htmlentities($data['email']); /*html entities à vérifier*/
             $password = htmlentities($data['password']);
 
-
             $connectManager = new ConnectManager();
             $identity = $connectManager->selectOneByMail($email);  /*renvoie le passwords*/
 
@@ -32,10 +31,9 @@ class ConnectController extends AbstractController
                 if ($identity['pswd'] == $password) { /*comparaison des passwords*/
                     $_SESSION['userId'] = $identity['id']; /*création identité par ouverture session*/
 
-                    /*var_dump($_SESSION);*/
                     return $this->twig->render('Profiles/profilesList.html.twig'); /* page liste profils*/
                 } else {/*else renvoi sur page acceuil*/
-                    return $this->twig->render('Home/errorLogin.html.twig');
+                    return $this->twig->render('Home/errorLogin2.html.twig');
                 }
             }
         }
