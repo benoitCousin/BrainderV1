@@ -3,6 +3,7 @@
 {% block title %}Affichage des profils{% endblock %}
 
 {% block content %}
+<div class="cadre">
     <div id="soughtProfilesContainer">
         <h1>Profil trouvé</h1>
         <button onclick="signalConfirm()">Signaler ce profil !</button>
@@ -15,6 +16,7 @@
     <input type="hidden" id="profile" value={{resultResearch.0.id}}>
     <input type="hidden" id="pseudo" value={{resultResearch.0.pseudo}}>
     <input type="hidden" id="searchingId" value={{userId}}>
+</div>
 {% endblock %}
 
 {% block javascript %}

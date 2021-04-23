@@ -1,87 +1,88 @@
 {% extends 'layout.html.twig' %}
  
 {% block content %}
-
-<div align="center">
-	<h2>Inscription</h2>
-	<br/><br/>
-<form method="POST" action="create">
-	<table>
-		<tr>
-			<td>
-				<label for ="Firstname">Firstname :</label>
-			</td>
-			<td text align="left">
-				<input type="text" placeholder="Prenom" id="firstname" name="Firstname"/>
-			</td>
-		</tr>
- 
-		<tr>
-			<td align="right">
-				<label for ="Lastname">Lastname :</label>
-			</td>
-			<td text align="left">
-				<input type="text" placeholder=" Nom" id="Lastname" name="Lastname"/>
-			</td>
- 
+<div class="cadre">
+	<div align="center">
+		<h2>Inscription</h2>
+		<br/><br/>
+	<form method="POST" action="create">
+		<table>
 			<tr>
-                <td>
-                    <label for ="Birthday">Birthday :</label>
-                </td>
-                <td align="left">
-                    <input type="date" placeholder="Date d'anniversaire" id="birthday" name="birthday"/>
-                </td>
-        <tr>
- 
-		<tr>
 				<td>
-					<label for ="mail">Mail :</label>
+					<label for ="Firstname">Firstname :</label>
 				</td>
-				<td align="left">
-					<input type="email" placeholder="Votre mail" id="mail" name="mail"/>
+				<td text align="left">
+					<input type="text" placeholder="Prenom" id="firstname" name="Firstname"/>
 				</td>
- 
-		<tr>
-				<td>
-					<label for ="mail2">Mail :</label>
+			</tr>
+	
+			<tr>
+				<td align="right">
+					<label for ="Lastname">Lastname :</label>
 				</td>
-				<td align="left">
-					<input type="email" placeholder="confirmation d'email" id="mail2" name="mail2"/>
+				<td text align="left">
+					<input type="text" placeholder=" Nom" id="Lastname" name="Lastname"/>
 				</td>
- 
-		<tr>
+	
+				<tr>
 					<td>
-						<label for ="password">password :</label>
+						<label for ="Birthday">Birthday :</label>
 					</td>
 					<td align="left">
-						<input type="password" placeholder=" password" id="password" name="pswd"/>
+						<input type="date" placeholder="Date d'anniversaire" id="birthday" name="birthday"/>
 					</td>
- 
-		<tr>
+			<tr>
+	
+			<tr>
+					<td>
+						<label for ="mail">Mail :</label>
+					</td>
+					<td align="left">
+						<input type="email" placeholder="Votre mail" id="mail" name="mail"/>
+					</td>
+	
+			<tr>
+					<td>
+						<label for ="mail2">Mail :</label>
+					</td>
+					<td align="left">
+						<input type="email" placeholder="confirmation d'email" id="mail2" name="mail2"/>
+					</td>
+	
+			<tr>
 						<td>
 							<label for ="password">password :</label>
 						</td>
 						<td align="left">
-							<input type="password" placeholder="Confirmation de password" id="password" name="pswd"/>
+							<input type="password" placeholder=" password" id="password" name="pswd"/>
 						</td>
- 
-		<tr>
-				<td>
-					<label for ="Sexe">sexe :</label>
+	
+			<tr>
+							<td>
+								<label for ="password">password :</label>
+							</td>
+							<td align="left">
+								<input type="password" placeholder="Confirmation de password" id="password" name="pswd"/>
+							</td>
+	
+			<tr>
+					<td>
+						<label for ="Sexe">sexe :</label>
+					</td>
+					<td align="left">
+						<input type="radio" name="sexe" value="0" checked> Homme <INPUT type="radio" name="sexe" value="1"> Femme
+					</td>
+	
+			<tr>
+				<td></td>
+				<td align="center">
+					<br/>
+					<input type="submit" name"submit" name="forminscription" value="Je valide"/>
 				</td>
-				<td align="left">
-					<input type="radio" name="sexe" value="0" checked> Homme <INPUT type="radio" name="sexe" value="1"> Femme
-				</td>
- 
-		<tr>
-			<td></td>
-			<td align="center">
-				<br/>
-				<input type="submit" name"submit" name="forminscription" value="Je valide"/>
-			</td>
-		</tr>
-		</table>
- 
-</form>
+			</tr>
+			</table>
+	
+	</form>
+	</div>
 </div>
 {% endblock %}

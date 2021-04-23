@@ -10,6 +10,10 @@ body
  overflow-x :hidden;
 }
 
+.cadre {
+  padding-top:8rem;
+}
+
 /* /////// start soughtProfile.html.twig ////// */
 
 #soughtProfilesContainer {
