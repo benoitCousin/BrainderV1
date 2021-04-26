@@ -11,15 +11,17 @@ class ContactController extends AbstractController
         if (
             isset($_POST['subject']) &&
             isset($_POST['message']) &&
-            isset($_POST['profilId'])
+            isset($_POST['profilId']) &&
+            isset($_POST['signalId'])
         ) {
             $data = array_map('trim', $_POST);
             $subject = htmlentities($data['subject']);
             $message = htmlentities($data['message']);
             $profilId = htmlentities($data['profilId']);
+            $signalId = htmlentities($data['signalId']);
 
             $manager = new ContactManager();
-            $manager->insert($subject, $message, $profilId);
+            $manager->insert($subject, $message, $profilId, $signalId);
         }
 
         $userId = $_SESSION['userId'];
