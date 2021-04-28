@@ -46,8 +46,8 @@ class SoughtProfileManager extends AbstractManager
 
     public function research(int $userID, int $gender)
     {
-        $query = 'SELECT id, pseudo, catchPhrase, img_nom FROM profiles LEFT JOIN pictures 
-            ON profiles.id = pictures.profilId WHERE id != ' . $userID . ' AND gender = ' . $gender . ';';
+        $query = 'SELECT id, pseudo, catchPhrase, img_nom, town FROM profiles LEFT JOIN pictures 
+        ON profiles.id = pictures.profilId WHERE id != ' . $userID . ' AND gender = ' . $gender . ';';
         $statement = $this->pdo->query($query);
 
         return $statement->fetchAll();

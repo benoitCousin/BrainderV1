@@ -40,7 +40,7 @@ body
 
 }
 
-.card-pseudo, .card-sentence {
+.card-pseudo, .card-sentence, .card-distance {
  display: block;
  text-align: center;
  align-content: center;

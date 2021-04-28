@@ -24,6 +24,23 @@ class SoughtProfileController extends AbstractController
         }
         $resultResearch[0]['img_nom'] = explode(" ", $resultResearch[0]['img_nom']);
 
+        // distance calculate
+        $user = $profileManager->selectOneById($userID);
+        $userTown = $user['town'];
+        foreach ($resultResearch as $key => $profile) {
+            $profileTown = $profile['town'];
+            $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" . $userTown . "&destinations="
+                . $profileTown . "&language=fr-FR&key=" . API_KEY;
+            $raw = file_get_contents($url);
+            $json = json_decode($raw, true);
+            if ($json['rows'][0]['elements'][0]['status'] == 'NOT_FOUND') {
+                $distance = 'distance non calculée';
+            } else {
+                $distance = $json['rows'][0]['elements'][0]['distance']['text'];
+            }
+            $resultResearch[$key]['distance'] = $distance;
+        }
+
         $_SESSION['resultResearch'] = $resultResearch;
 
         return $this->twig->render('SoughtProfile/soughtProfile.html.twig', [
