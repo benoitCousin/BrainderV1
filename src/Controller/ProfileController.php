@@ -24,6 +24,9 @@ class ProfileController extends AbstractController
 
 
 
+
+
+
         return $this->twig->render('Profiles/profile.html.twig', ['user' => $user]);
     }
 
@@ -35,12 +38,33 @@ class ProfileController extends AbstractController
             $email = htmlentities($user['mail']);
             $birthday = htmlentities($user['birthday']);
             $password = htmlentities($user['pswd']);
+            $pseudo = htmlentities($user['pseudo']);
             $id =  $_SESSION ['userId'];
+
+            $uploadDir = 'assets/images/profile/';
+
+            $imgNom = basename($_FILES['picture']['name']);
+
+
+
+
+            $uploadFile = $uploadDir . basename($_FILES['picture']['name']);
+
+
+
+
+            if (!empty($imgNom)) {
+                $profileManager = new ProfileManager();
+                $profileManager->uploadPictures($imgNom, $id);
+            }
+
+            move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile);
+
 
 
             $profileManager = new ProfileManager();
-            $profileManager->update($email, $password, $birthday, $id);
-            header('Location:/SoughtProfile/researchDisplay');
+            $profileManager->update($email, $password, $birthday, $pseudo, $id);
+            header('Location:/SoughtProfile/profileDisplay');
         }
 
 

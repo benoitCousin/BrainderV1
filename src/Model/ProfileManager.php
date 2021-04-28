@@ -8,7 +8,7 @@ class ProfileManager extends AbstractManager
 
     public function insert($lastName, $firstName, $email, $password, $sexe, $birthday)
     {
-        $query = 'INSERT INTO profiles (lastname, firstname, email, pswd, gender,birthday)
+        $query = 'INSERT INTO profiles (lastname, firstname, email, pswd, gender, birthday)
                     VALUES (:lastname, :firstname, :email, :pswd, :gender, :birthday);';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':lastname', $lastName, \PDO::PARAM_STR);
@@ -24,7 +24,6 @@ class ProfileManager extends AbstractManager
 
     public function selectOne($email, $password)
     {
-        // prepared request
         $statement = $this->pdo->prepare("SELECT  id from profiles WHERE email=:email AND  pswd=:pswd");
         $statement->bindValue(':email', $email, \PDO::PARAM_STR);
         $statement->bindValue(':pswd', $password, \PDO::PARAM_STR);
@@ -33,15 +32,27 @@ class ProfileManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function update($email, $password, $birthday, $id): bool
+    public function update($email, $password, $birthday, $pseudo, $id): bool
     {
         $statement = $this->pdo->prepare("UPDATE  profiles SET email=:email, pswd=:pswd, 
-            birthday=:birthday WHERE id =:id");
+            birthday=:birthday, pseudo=:pseudo WHERE id =:id");
         $statement->bindValue(':email', $email, \PDO::PARAM_STR);
         $statement->bindValue(':pswd', $password, \PDO::PARAM_STR);
         $statement->bindParam(':birthday', $birthday, \PDO::PARAM_STR);
+        $statement->bindParam(':pseudo', $pseudo, \PDO::PARAM_STR);
         $statement->bindParam(':id', $id, \PDO::PARAM_INT);
 
         return $statement->execute();
+    }
+
+
+    public function uploadPictures($imgNom, $profilId): void
+    {
+        $query = 'INSERT INTO pictures (img_nom, profilId)
+            VALUES (:img_nom, :profilId);';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':img_nom', $imgNom, \PDO::PARAM_STR);
+        $statement->bindValue(':profilId', $profilId, \PDO::PARAM_INT);
+        $statement->execute();
     }
 }
