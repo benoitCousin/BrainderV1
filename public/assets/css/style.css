@@ -10,6 +10,15 @@ body
  overflow-x :hidden;
 }
 
+
+
+	label
+{
+	display: block; 
+	width: 250px;
+float:left;
+}
+
 .cadre {
   padding-top:8rem;
 }

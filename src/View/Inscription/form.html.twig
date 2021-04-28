@@ -1,88 +1,95 @@
 {% extends 'layout.html.twig' %}
  
 {% block content %}
-<div class="cadre">
-	<div align="center">
-		<h2>Inscription</h2>
-		<br/><br/>
-	<form method="POST" action="create">
-		<table>
-			<tr>
-				<td>
-					<label for ="Firstname">Firstname :</label>
-				</td>
-				<td text align="left">
-					<input type="text" placeholder="Prenom" id="firstname" name="Firstname"/>
-				</td>
-			</tr>
-	
-			<tr>
-				<td align="right">
-					<label for ="Lastname">Lastname :</label>
-				</td>
-				<td text align="left">
-					<input type="text" placeholder=" Nom" id="Lastname" name="Lastname"/>
-				</td>
-	
-				<tr>
-					<td>
-						<label for ="Birthday">Birthday :</label>
-					</td>
-					<td align="left">
-						<input type="date" placeholder="Date d'anniversaire" id="birthday" name="birthday"/>
-					</td>
-			<tr>
-	
-			<tr>
-					<td>
-						<label for ="mail">Mail :</label>
-					</td>
-					<td align="left">
-						<input type="email" placeholder="Votre mail" id="mail" name="mail"/>
-					</td>
-	
-			<tr>
-					<td>
-						<label for ="mail2">Mail :</label>
-					</td>
-					<td align="left">
-						<input type="email" placeholder="confirmation d'email" id="mail2" name="mail2"/>
-					</td>
-	
-			<tr>
-						<td>
-							<label for ="password">password :</label>
-						</td>
-						<td align="left">
-							<input type="password" placeholder=" password" id="password" name="pswd"/>
-						</td>
-	
-			<tr>
-							<td>
-								<label for ="password2">password :</label>
-							</td>
-							<td align="left">
-								<input type="password" placeholder="Confirmation de password" id="password2" name="pswd2"/>
-							</td>
-	
-			<tr>
-					<td>
-						<label for ="Sexe">sexe :</label>
-					</td>
-					<td align="left">
-						<input type="radio" name="sexe" value="0" checked> Homme <INPUT type="radio" name="sexe" value="1"> Femme
-					</td>
-	
-			<tr>
-				<td></td>
-				<td align="center">
-					<br/>
-					<input type="submit" name"submit" name="forminscription" value="Je valide"/>
-				</td>
-			</tr>
-			</table>
-	
-	</form>
-	</div>
-</div>
+
+
+
+  <div class = "cadre">
+         <div class="container">
+             <h1>Inscriptions</h1>
+			 <form method="POST" action="create">
+                 <div class="form-row">
+                     <div class="col-md-4 mb-3">
+                         <label class="inscriptionLabel" for="Firstname">Nom:</label>
+                         <input type="text" class="form-control" id="Firstname"name="Firstname" placeholder="Nom" required>
+                       <br><br>
+                     </div>
+                     <div class="col-md-4 mb-3">
+                         <label class="inscriptionLabel" for="Lastname">Prénom:</label>
+                         <input type="text" class="form-control" id="Lastname" name="Lastname" placeholder="Prenom" required>
+                   <br><br>
+                     </div>
+                     <div class="col-md-4 mb-3">
+                    	<label class="inscriptionLabel" for="birthday">Veuillez saisir votre date de naissance:</label>
+							<input type="date" id="birthday" name="birthday">
+                         <br><br>
+                 </div>
+                 <div class="required">
+						<label class="inscriptionLabel" for="pswd">Mots de passe:</label>
+						<input type='password' id='L3' name="pswd"placeholder="Mots de passe"><br><br>
+
+						<label class="inscriptionLabel" for="pswd">Confirmer mdp:</label>
+						<input type="password"placeholder="Mots de passe"
+					  onfocus="validatemotdepasse(document.getElementById('L3'), this);" 
+					  oninput="validatemotdepasse(document.getElementById('L4'), this);">
+				  </div><br><br>
+				 <div class="required">
+						<label class="inscriptionLabel" for="mail">Email:</label>
+						<input type='email' id='p1'name="mail" placeholder="Email"><br><br>
+
+						<label class="inscriptionLabel" for="email">Confirmer Email:</label>
+						<input type='email' placeholder="Email"
+						  onfocus="validateMail(document.getElementById('p1'), this);" 
+						  oninput="validateMail(document.getElementById('p1'), this);">
+					  </div><br><br>
+					 
+             
+					 <div class="form-check">
+						<label class="inscriptionLabel" for="sexe">Sexe :</label><input type="radio" name="sexe" id="sexe" />Homme <input type="radio" name="sexe" />Femme<br>
+						
+					 </div><br><br>
+				 
+				 <div class="form-group">
+					<div class="form-check">
+					  <input class="form-check-input" type="checkbox" value="" id="cgu" required>
+					  <label class="form-check-label" for="cgu">J'accepte les conditions générales d'utilisation et de vente</label>
+                 </div>
+                 <button class="btn btn-primary" type="submit">Envoyer</button>
+             </form>
+         </div>
+		</div>
+
+		   <script>
+         
+           (function() {
+             'use strict';
+             window.addEventListener('load', function() {
+               let forms = document.getElementsByClassName('needs-validation');
+               let validation = Array.prototype.filter.call(forms, function(form) {
+                 form.addEventListener('submit', function(event) {
+                   if (form.checkValidity() === false) {
+                     event.preventDefault();
+                     event.stopPropagation();
+                   }
+                   form.classList.add('was-validated');
+                 }, false);
+               });
+             }, false);
+			})();
+			function validateMail(p1, p2) {
+if (p1.value != p2.value || p1.value == '' || p2.value == '') {
+    p2.setCustomValidity('email incorrect');
+} else {
+    p2.setCustomValidity('');
+}
+}
+function validatemotdepasse(L3, L4) {
+if (L3.value != L4.value || L3.value == '' || L4.value == '') {
+    L4.setCustomValidity('mot de passe incorrect');
+} else {
+    L4.setCustomValidity('');
+}
+}
+		
+         </script>
 {% endblock %}

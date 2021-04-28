@@ -64,7 +64,7 @@ class ProfileController extends AbstractController
 
             $profileManager = new ProfileManager();
             $profileManager->update($email, $password, $birthday, $pseudo, $id);
-            header('Location:/SoughtProfile/profileDisplay');
+            header('Location:/SoughtProfile/selectShow');
         }
 
 

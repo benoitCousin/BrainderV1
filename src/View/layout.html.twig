@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+    <link rel="stylesheet" type="text/class" href="Bootstrap/css/bootstrap.min.css">
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -16,6 +17,8 @@
     {% block navbar %}{% include 'Item/navbar.html.twig' %}{% endblock %}
     {% block content %}{% endblock %}
     {% block javascript %}{% endblock %}
+     <script src="Bootstrap/js/jquery-1.12.0.min.js"></script>
+            <script src="Bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
 

@@ -8,7 +8,7 @@ class InscriptionManager extends AbstractManager
 
     public function insert($lastName, $firstName, $email, $password, $sexe, $birthday)
     {
-        $query = 'INSERT INTO profiles (lastname, firstname, email, pswd, gender,birthday)
+        $query = 'INSERT INTO profiles (lastname, firstname, email, pswd, gender, birthday)
                     VALUES (:lastname, :firstname, :email, :pswd, :gender, :birthday);';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':lastname', $lastName, \PDO::PARAM_STR);

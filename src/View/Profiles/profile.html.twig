@@ -1,82 +1,66 @@
 {% extends 'layout.html.twig' %}
- 
+
 {% block content %}
 
-<div align="center">
-	<h2>Votre Profil</h2>
+ 
+
+
+
+	
+  <div class ="cadre">
+	<div class="container"></div>
+			<h1>Votre Profil</h1>
 	<br/><br/>
-<form method="POST" action="update" enctype="multipart/form-data">
-	<table>
-		<td align="right">
+			<form method="POST" action="update" enctype="multipart/form-data">
+				<div class="form-row">
+					<div class="col-md-4 mb-3"></div>
+		
 			<br/> <!--random avatar creation button-->
 			<input type="button" value="Nouvel avatar"/ onclick="window.location.href = '/avatar/avatarCreate';">
 			<img src="../assets/images/avatars/avatar3.png"> <!--création image avatar3.png-->
-		</td>
-		<tr>
-			<td>
-				<label for ="Firstname">Firstname :</label>
-			</td>
-			<td text align="left">
+			
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+				<label class="inscriptionLabel" for ="Firstname">Nom :</label>
 				<input type="text" placeholder="Nom" value= "{{user.firstName}}" id="firstname" name="Firstname"/>
-			</td>
-		</tr>
- 
-		<tr>
-			<td>
-				<label for ="Lastname">Lastname :</label>
-			</td>
-			<td text align="left">
+				<br><br>
+			</div>
+			<div class="col-md-4 mb-3">
+				<label class="inscriptionLabel" for ="Lastname">Prenom:</label>
 				<input type="text" placeholder="Prénom" value= "{{user.lastName}}" id="Lastname" name="Lastname"/>
-				</td>
-			</td>
-		<tr>
-			<td>
-					<label for ="pseudo">Pseudo :</label>
-			</td>
-				<td text align="left">
+				<br><br>
+			</div>
+			
+				<div class="col-md-4 mb-3">
+					<label class="inscriptionLabel" for ="pseudo">Pseudo :</label>
 					<input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo"/>
-				</td>
- 
-		<tr>
-					<td>
-						<label for ="Birthday">Birthday :</label>
-					</td>
-					<td align="left">
+					<br><br>
+					</div>
+				<div class="col-md-4 mb-3">
+						<label class="inscriptionLabel" for ="Birthday">Votre date de naissance :</label>
 						<input type="date" placeholder="birthday"  value= "{{user.birthday}}" id="birthday" name="birthday"/>
-					</td>
-			<tr>
-	
-			<tr>
-					<td>
-						<label for ="mail">Mail :</label>
-					</td>
-					<td align="left">
+						<br><br>
+				</div>
+				<div class="col-md-4 mb-3">
+						<label class="inscriptionLabel" for ="mail">Mail :</label>
 						<input type="email" placeholder="Votre mail" value= "{{user.email}}" id="mail" name="mail"/>
-					</td>
-	
-			<tr>
-						<td>
-							<label for ="password">password :</label>
-						</td>
-						<td align="left">
+						<br><br>
+				</div>
+				<div class="col-md-4 mb-3">
+							<label class="inscriptionLabel" for ="password">Mot de passe :</label>
 							<input type="password" placeholder=" password" id="password" name="pswd"/>
-						</td>
-
-			<tr>
-						<td>
-							<label for="imageUpload">Inserer vos photos</label>  
-						</td> 
-						<td align="left">
+							<br><br>
+				</div>
+					<div class="col-md-4 mb-3">
+							<label class="inscriptionLabel" for="imageUpload">Inserer vos photos</label>  
 							<input type="file" name="picture" id="imageUpload" /><br></br>
-						</td>
-					<tr>	
-						<td></td>
-						<td align="center">
-							<br/>
-						<input type="submit" name"submit" name="forminscription" value="enregister"/>
-						</td>
-		</tr>
-	</table>
+							<br><br>
+						</div>
+						<div class="col-md-4 mb-3">
+							<button class="btn btn-primary" type="submit">Enregister</button>
+						
+	
 	</form>
-	<div>
+</div>
+</div>
 		{% endblock %}

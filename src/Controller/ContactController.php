@@ -24,6 +24,10 @@ class ContactController extends AbstractController
             $manager->insert($subject, $message, $profilId, $signalId);
         }
 
+        if (empty($_SESSION)) {
+            $_SESSION ["userId"] = 0;
+        }
+
         $userId = $_SESSION['userId'];
         return $this->twig->render('Contact/contactForm.html.twig', ['userId' => $userId]);
     }

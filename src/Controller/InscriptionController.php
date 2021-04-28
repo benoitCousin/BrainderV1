@@ -16,6 +16,23 @@ class InscriptionController extends AbstractController
             $password = $_POST['pswd'];
             $birthday = $_POST['birthday'];
 
+
+
+
+            if (
+                isset($_POST['Lastname']) &&
+                isset($_POST['Firstname']) &&
+                isset($_POST['mail']) &&
+                isset($_POST['sexe']) &&
+                isset($_POST['pswd'])
+            ) {
+                $user = array_map('trim', $_POST);
+                $lastName = htmlentities($user['Lastname']);
+                $firstName = htmlentities($user['Firstname']);
+                $email = htmlentities($user['mail']);
+                $sexe = htmlentities($user['sexe']);
+                $password = htmlentities($user['pswd']);
+            }
             $manager = new InscriptionManager();
             $manager->insert($lastName, $firstName, $email, $password, $sexe, $birthday);
             $userId = $manager->selectOne($email, $password);//recuperation de l'id.
