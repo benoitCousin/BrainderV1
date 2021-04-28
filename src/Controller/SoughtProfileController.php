@@ -70,4 +70,38 @@ class SoughtProfileController extends AbstractController
 
         return $this->twig->render('SoughtProfile/research.html.twig', ['errors' => $errors]);
     }
+
+    public function selectShow()
+    {
+        $userId = $_SESSION['userId'];
+
+        $profileManager = new SoughtProfileManager();
+        $profileList = $profileManager->selectList($userId);
+
+        return $this->twig->render('Profiles/profilesList.html.twig', [
+            'userId' => $userId,
+            'list' => $profileList
+        ]);
+    }
+
+    public function deleteSelectProfile(int $profilId)
+    {
+        $userId = $_SESSION['userId'];
+
+        $profileManager = new SoughtProfileManager();
+        $soughtMatch = $profileManager->selectOneMatch($profilId, $userId);
+
+        if ($soughtMatch['profile1Id'] == $userId) {
+            $profileManager->updateRefuseMatch($userId, $profilId, 'profile1Status', 'date1Status');
+        } else {
+            $profileManager->updateRefuseMatch($profilId, $userId, 'profile2Status', 'date2Status');
+        }
+
+        $profileList = $profileManager->selectList($userId);
+
+        return $this->twig->render('Profiles/profilesList.html.twig', [
+            'userId' => $userId,
+            'list' => $profileList
+        ]);
+    }
 }

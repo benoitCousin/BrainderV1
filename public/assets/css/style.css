@@ -360,6 +360,49 @@ font-family: verdana;
 
 /* /////// end contactForm.html.twig ////// */
 
+
+/* /////// start profilesList.html.twig /////// */
+
+.select-profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.select-pseudo, .select-date {
+    margin: 10px;
+}
+
+.select-pseudo {
+  font-size: xx-large;
+}
+
+.accept, .refuse, .undef {
+    height: 70px;
+    width: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.accept {
+    background: limegreen;
+    font-size: large;
+}
+
+.refuse {
+  background: red;
+}
+
+.undef {
+  background: grey;
+}
+
+/* /////// end profilesList.html.twig /////// */
+
+
 /*=========================================================
 *
 *===================== hotspot CSS ===================
