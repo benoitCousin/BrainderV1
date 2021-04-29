@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Model\ProfileManager;
 
 /*explique présence ConnectMAnager*/
-/*session_start();*/
+
 
 
 class ProfileController extends AbstractController

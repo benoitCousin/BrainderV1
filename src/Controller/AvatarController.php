@@ -8,17 +8,18 @@ class AvatarController extends AbstractController
 {
     public function avatarCreate()
     {
-        // On crécupère le userId pour identification
-        $_SESSION ['userId'] = 3;
+        // On récupère le userId pour identification
+
         $string = $_SESSION ['userId'];
+
         // On créé le hash à partir d'une chaîne de caractères aléatoire
         $randomString = random_bytes(6);
         $hash = md5($randomString);
-// On récupère une couleur héxadécimale avec les 6 premiers caractères du hash
+    // On récupère une couleur héxadécimale avec les 6 premiers caractères du hash
         $color = substr($hash, 0, 6);
-// On déclare notre image et nos couleurs
+    // On déclare notre image et nos couleurs
         $image = imagecreate(50, 50);
-//image 50 pixels de côté
+    //image 50 pixels de côté
         $color = imagecolorallocate(
             $image,
             hexdec(substr($color, 0, 2)),
@@ -48,9 +49,9 @@ class AvatarController extends AbstractController
 
         // On affiche l'image
         header('Content-type: image/png');
-        $road = 'assets/images/avatars/avatar' . $string . '.png';
+        $road = 'assets/images/avatars/avatar' . $string . '.png'; //correspond à avatarId
         imagepng($image, $road); //création fichier avatar
-        header("location: /profile/index");
+        header("location: /profile/show");
     }
 
     public function avatarTransfert()

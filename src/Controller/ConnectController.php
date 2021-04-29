@@ -5,8 +5,6 @@ namespace App\Controller;
 use App\Model\ConnectManager;
 
 /*explique présence ConnectMAnager*/
-/*session_start();*/
-
 
 class ConnectController extends AbstractController
 {
@@ -23,19 +21,16 @@ class ConnectController extends AbstractController
             $password = htmlentities($data['password']);
 
             $connectManager = new ConnectManager();
-            $identity = $connectManager->selectOneByMail($email);  /*renvoie le passwords*/
+            $identity = $connectManager->selectOneByMail($email);  /*renvoie Id, eMail et Pswd*/
 
-            if ($identity == false) {/*vérification mail*/
-                    return $this->twig->render('Home/errorLogin.html.twig');
-            } else {
-                if ($identity['pswd'] == $password) { /*comparaison des passwords*/
-                    $_SESSION['userId'] = $identity['id']; /*création identité par ouverture session*/
+            if (isset($identity['pswd']) && $identity['pswd'] == $password) { /*comparaison des passwords*/
+                $_SESSION['userId'] = $identity['id']; /*création identité par ouverture session*/
 
-                    header('Location:/soughtProfile/selectShow'); /* page liste profils*/
-                } else {/*else renvoi sur page acceuil*/
-                    return $this->twig->render('Home/errorLogin2.html.twig');
-                }
+                return $this->twig->render('Profiles/profilesList.html.twig'); /* page liste profils*/
             }
+
+            /*renvoi sur page acceuil*/
+            return $this->twig->render('Home/index.html.twig', ['error' => "nous n'avons pas réussi à vous connecter"]);
         }
     }
 }

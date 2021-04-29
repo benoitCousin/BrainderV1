@@ -277,7 +277,6 @@ font-weight: bold;
 
 ::selection{
 background-color: lightgreen;
-color: orange;
 }
 
 #popup{
@@ -287,8 +286,8 @@ z-index: 1;
 padding-top: 100px;
 left: 0;
 top: 0;
-width: 45%; 
-height: 50%;
+width: 35%; 
+height: 40%;
 overflow: auto;
 background-color: rgba(0,0,0,0.8); 
 }
@@ -297,8 +296,8 @@ background-color: rgba(0,0,0,0.8);
 margin: auto;
 padding: 10px;
 border: 6px solid green;;
-width: 45%;
-height: 50%;
+width: 35%;
+height: 40%;
 }
 
 #popupContent form {
@@ -412,12 +411,32 @@ font-family: verdana;
 
 /* /////// end profilesList.html.twig /////// */
 
+/*=======================================================
+*
+*===================== errorpopup CSS ===================
+*
+=========================================================*/
+  
+.errorPopUp{
+
+  display:flex;
+  align-self:center;
+  margin-left: 250px;
+  padding:0;
+  border: solid 2px black;
+  height:8VH;
+  width:30vh;
+  
+}
+
 
 /*=========================================================
 *
 *===================== hotspot CSS ===================
 *
-==========================================================*/
+======================================================*/
+
+
 
 .hotspot {
   margin: 100px;

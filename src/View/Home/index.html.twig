@@ -1,6 +1,17 @@
 {% extends 'Item/layout1.html.twig' %}
 {% block content %}
 
+<div class= "cadre">
+    
+
+        {% if error is defined %} <!--pop-up erreur-->
+        <div class= "errorPopUp">    
+            {{error}}
+        </div>
+        {% endif %}
+
+    
+
 <div class= "container">  
 
 
@@ -34,10 +45,12 @@
 
                     <input type="email" name="email" placeholder="email" required/><br/>
                     <input type="password" name="password" placeholder="mot de passe" required/><br/>
-                    <input type="submit" name="register" value="C'est parti"/></form><br/>
+                    <input type="submit" name="register" value="Valider"/></form><br/>
                 </form>
+                
             </div>
-        </div>                
+        </div>    
+</div>                    
 {% endblock %}
 
 {% block javascript %}
@@ -47,13 +60,13 @@
        
         show_popup.onclick = function(){
             popup.style.display = "block";
-        }
+        };
         
-        window.onclick = function(event){ /*fermeture si ???*/
+        window.onclick = function(event){ /*fermeture si clique sur pop-up*/
             if(event.target == popup){
                 popup.style.display = "none";
             }
-        }
+        };
     </script>
 
 {% endblock %}

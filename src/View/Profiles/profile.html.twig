@@ -15,9 +15,14 @@
 				<div class="form-row">
 					<div class="col-md-4 mb-3"></div>
 		
-			<br/> <!--random avatar creation button-->
-			<input type="button" value="Nouvel avatar"/ onclick="window.location.href = '/avatar/avatarCreate';">
-			<img src="../assets/images/avatars/avatar3.png"> <!--création image avatar3.png-->
+			<tr>
+				<td></td>
+				<td align="center">
+					<br/> <!--random avatar creation button-->
+					<input type="button" value="Nouvel avatar"/ onclick="window.location.href = '/avatar/avatarCreate';">
+					<img src="../assets/images/avatars/avatar{{user.id}}.png"> <!--création image avatarId.png-->
+				</td>
+			</tr>
 			
 			<div class="form-row">
 				<div class="col-md-4 mb-3">

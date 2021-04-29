@@ -14,6 +14,6 @@ class ConnectManager extends AbstractManager
         $statement->bindValue('email', $email, \PDO::PARAM_STR);
         $statement->execute();
 
-        return $statement->fetch(); /*renvoie password ET id*/
+        return $statement->fetch(); /*renvoie Id, eMail et pswd*/
     }
 }
