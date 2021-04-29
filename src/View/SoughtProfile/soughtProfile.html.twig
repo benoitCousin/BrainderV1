@@ -12,18 +12,21 @@
 
         <h5 class="card-pseudo">{{ resultResearch.0.pseudo }}</h5>
         <p class="card-sentence">{{ resultResearch.0.catchPhrase }}</p>
-        <p class="card-distance">Proximité du profil : {{ resultResearch.0.distance }}</p>
-    
-        <div class= "contentimg">
 
-            {% for img in resultResearch.0.img_nom %}
-                <div class="imgProfile"> <img class="imgcard"src="/assets/images/profile/{{ img }}" alt=""> </div>
-            {% endfor %}
-                
+        <div class= "contentimg">
+            <div class='hotspot '>
+                <div class="button-wrap">
+                    <button onclick="" id='pulsebutton' class='pulsebutton'>+</button>
+                     {% for img in resultResearch.0.img_nom %}
+                           <div class="imgProfile"> <img class="imgcard"src="/assets/images/profile/{{ img }}" alt=""> </div>
+                     {% endfor %}
+               </div>
+            </div>
+
         </div>
 
     </div>
-    {# to transfer twig variables into JS code by DOM #}
+{# to transfer twig variables into JS code by DOM #}
     <input type="hidden" id="profile" value={{resultResearch.0.id}}>
     <input type="hidden" id="pseudo" value={{resultResearch.0.pseudo}}>
     <input type="hidden" id="searchingId" value={{userId}}>
@@ -89,5 +92,15 @@
                 document.location.href="/contact/signal/"+profileId+"/"+profilePseudo;
             }
         }
+    
+    var pulsebutton = document.getElementById('pulsebutton');
+    var imgcards = document.getElementsByClassName('imgcard');
+
+    pulsebutton.addEventListener('click',function(){
+        
+        for(var card of imgcards){
+            card.style.display = 'block';
+        }
+    });
     </script>
 {% endblock %}

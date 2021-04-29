@@ -21,6 +21,7 @@ float:left;
 
 .cadre {
   padding-top:8rem;
+
 }
 
 /* /////// start soughtProfile.html.twig ////// */
@@ -39,8 +40,6 @@ float:left;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-
-    position:fixed;
     z-index:10;
     left:20%;
     top:auto;
@@ -71,7 +70,9 @@ float:left;
   }
 .imgcard {
   display:block;
+  display:none;
 }
+
 
 .rightMove {
  animation:.5s slideRight ease-in forwards;
@@ -418,5 +419,62 @@ font-family: verdana;
 *
 ==========================================================*/
 
+.hotspot {
+  margin: 100px;
+}
   
+  .button-wrap {
+    display: table;  
+  }
+  
+  .pulsebutton {
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    position: relative;
+    display: table-cell;
+    width: 30px;
+    height: 30px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #3a89de;
+    border: none;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    border-radius: 100%;
+    vertical-align: middle;
+    background: #fff;
+    cursor: pointer;
+    -webkit-animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+    -moz-animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+    animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+  }
+
+    :hover {
+      -webkit-animation: none;
+      -moz-animation: none;
+      animation: none;
+    }
+    
+    .desactivate {
+      color: #000;
+      background: #999;
+      -webkit-animation: none;
+      -moz-animation: none;
+      animation: none;
+    }
+  
+
+
+@-webkit-keyframes pulse {
+  to {
+    box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+  }
+}  
   
