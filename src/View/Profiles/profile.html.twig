@@ -7,35 +7,33 @@
 
 
 	
-  <div class ="cadre">
+<div class ="cadre">
 	<div class="container">
-			<h1>Votre Profil</h1>
-	<br/><br/>
-			<form method="POST" action="update" enctype="multipart/form-data">
-				<div class="form-row">
-					<div class="col-md-4 mb-3"></div>
-		
-			<br/> <!--random avatar creation button-->
-			<input type="button" value="Nouvel avatar"/ onclick="window.location.href = '/avatar/avatarCreate';">
-			<img src="../assets/images/avatars/avatar3.png"> <!--création image avatar3.png-->
-			</div>
+		<h1>Votre Profil</h1>
+		<br/><br/>
+		<form method="POST" action="update" enctype="multipart/form-data">
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
-				<label class="inscriptionLabel" for ="Firstname">Nom :</label>
-				<input type="text" placeholder="Nom" value= "{{user.firstName}}" id="firstname" name="Firstname"/>
-				<br><br>
-			</div>
-			<div class="col-md-4 mb-3">
-				<label class="inscriptionLabel" for ="Lastname">Prenom:</label>
-				<input type="text" placeholder="Prénom" value= "{{user.lastName}}" id="Lastname" name="Lastname"/>
-				<br><br>
-			</div>
+					<br/> <!--random avatar creation button-->
+					<input type="button" value="Nouvel avatar"/ onclick="window.location.href = '/avatar/avatarCreate';">
+					<img src="../assets/images/avatars/avatar{{user.id}}.png"> <!--création image avatarId.png-->	
+				</div>
+				<div class="col-md-4 mb-3">
+					<label class="inscriptionLabel" for ="Firstname">Nom :</label>
+					<input type="text" placeholder="Nom" value= "{{user.firstName}}" id="firstname" name="Firstname"/>
+					<br><br>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label class="inscriptionLabel" for ="Lastname">Prenom:</label>
+					<input type="text" placeholder="Prénom" value= "{{user.lastName}}" id="Lastname" name="Lastname"/>
+					<br><br>
+				</div>
 			
 				<div class="col-md-4 mb-3">
 					<label class="inscriptionLabel" for ="pseudo">Pseudo :</label>
 					<input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo"/>
 					<br><br>
-					</div>
+				</div>
 				<div class="col-md-4 mb-3">
 						<label class="inscriptionLabel" for ="Birthday">Votre date de naissance :</label>
 						<input type="date" placeholder="birthday"  value= "{{user.birthday}}" id="birthday" name="birthday"/>
@@ -45,7 +43,7 @@
 					<label class="inscriptionLabel" for ="town">Votre ville :</label>
 					<input type="text" placeholder="Ou habité vous ?"   id="town" name="town"/>
 					<br><br>
-			</div>
+				</div>
 				<div class="col-md-4 mb-3">
 						<label class="inscriptionLabel" for ="mail">Mail :</label>
 						<input type="email" placeholder="Votre mail" value= "{{user.email}}" id="mail" name="mail"/>
@@ -56,16 +54,17 @@
 							<input type="password" placeholder=" Votre mot de passe" id="password" name="pswd"/>
 							<br><br>
 				</div>
-					<div class="col-md-4 mb-3">
-							<label class="inscriptionLabel" for="imageUpload">Inserer vos photos</label>  
-							<input type="file" name="picture" id="imageUpload" /><br></br>
-							<br><br>
-						</div>
-						<div class="col-md-4 mb-3">
-							<button class="btn btn-primary" type="submit">Enregister</button>
-						
-						</div>
-	</form>
-
+				<div class="col-md-4 mb-3">
+						<label class="inscriptionLabel" for="imageUpload">Inserer vos photos</label>  
+						<input type="file" name="picture" id="imageUpload" /><br></br>
+						<br><br>
+				</div>
+				<div class="col-md-4 mb-3">
+					<button class="btn btn-primary" type="submit">Enregister</button>
+				</div>
+			</div>
+		</form>
+	</div>
 </div>
-		{% endblock %}
+
+{% endblock %}
