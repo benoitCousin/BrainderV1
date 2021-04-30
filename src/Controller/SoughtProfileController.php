@@ -33,10 +33,17 @@ class SoughtProfileController extends AbstractController
                 . $profileTown . "&language=fr-FR&key=" . API_KEY;
             $raw = file_get_contents($url);
             $json = json_decode($raw, true);
-            if ($json['rows'][0]['elements'][0]['status'] == 'NOT_FOUND') {
+            $rows = $json['rows'];
+            if (!isset($rows[0])) {
                 $distance = 'distance non calculée';
             } else {
-                $distance = $json['rows'][0]['elements'][0]['distance']['text'];
+                $elements = $rows[0]['elements'];
+                $status = $elements[0]['status'];
+                if ($status == 'NOT_FOUND') {
+                    $distance = 'distance non calculée';
+                } else {
+                    $distance = $elements[0]['distance']['text'];
+                }
             }
             $resultResearch[$key]['distance'] = $distance;
         }
