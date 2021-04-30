@@ -8,22 +8,17 @@
 
 	
   <div class ="cadre">
-	<div class="container"></div>
+	<div class="container">
 			<h1>Votre Profil</h1>
 	<br/><br/>
 			<form method="POST" action="update" enctype="multipart/form-data">
 				<div class="form-row">
 					<div class="col-md-4 mb-3"></div>
 		
-			<tr>
-				<td></td>
-				<td align="center">
-					<br/> <!--random avatar creation button-->
-					<input type="button" value="Nouvel avatar"/ onclick="window.location.href = '/avatar/avatarCreate';">
-					<img src="../assets/images/avatars/avatar{{user.id}}.png"> <!--création image avatarId.png-->
-				</td>
-			</tr>
-			
+			<br/> <!--random avatar creation button-->
+			<input type="button" value="Nouvel avatar"/ onclick="window.location.href = '/avatar/avatarCreate';">
+			<img src="../assets/images/avatars/avatar3.png"> <!--création image avatar3.png-->
+			</div>
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
 				<label class="inscriptionLabel" for ="Firstname">Nom :</label>
@@ -47,13 +42,18 @@
 						<br><br>
 				</div>
 				<div class="col-md-4 mb-3">
+					<label class="inscriptionLabel" for ="town">Votre ville :</label>
+					<input type="text" placeholder="Ou habité vous ?"   id="town" name="town"/>
+					<br><br>
+			</div>
+				<div class="col-md-4 mb-3">
 						<label class="inscriptionLabel" for ="mail">Mail :</label>
 						<input type="email" placeholder="Votre mail" value= "{{user.email}}" id="mail" name="mail"/>
 						<br><br>
 				</div>
 				<div class="col-md-4 mb-3">
 							<label class="inscriptionLabel" for ="password">Mot de passe :</label>
-							<input type="password" placeholder=" password" id="password" name="pswd"/>
+							<input type="password" placeholder=" Votre mot de passe" id="password" name="pswd"/>
 							<br><br>
 				</div>
 					<div class="col-md-4 mb-3">
@@ -64,8 +64,8 @@
 						<div class="col-md-4 mb-3">
 							<button class="btn btn-primary" type="submit">Enregister</button>
 						
-	
+						</div>
 	</form>
-</div>
+
 </div>
 		{% endblock %}

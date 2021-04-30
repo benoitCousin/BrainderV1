@@ -36,9 +36,10 @@ class ProfileController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = array_map('trim', $_POST);
             $email = htmlentities($user['mail']);
-            $birthday = htmlentities($user['birthday']);
             $password = htmlentities($user['pswd']);
+            $birthday = htmlentities($user['birthday']);
             $pseudo = htmlentities($user['pseudo']);
+            $town = htmlentities($user['town']);
             $id =  $_SESSION ['userId'];
 
             $uploadDir = 'assets/images/profile/';
@@ -63,7 +64,7 @@ class ProfileController extends AbstractController
 
 
             $profileManager = new ProfileManager();
-            $profileManager->update($email, $password, $birthday, $pseudo, $id);
+            $profileManager->update($email, $password, $birthday, $pseudo, $town, $id);
             header('Location:/SoughtProfile/selectShow');
         }
 

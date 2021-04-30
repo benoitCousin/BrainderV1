@@ -12,9 +12,9 @@ body
 
 
 
-	label
+	.inscriptionLabel
 {
-	display: block; 
+	display: block;
 	width: 250px;
 float:left;
 }
