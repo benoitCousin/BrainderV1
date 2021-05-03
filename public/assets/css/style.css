@@ -45,7 +45,6 @@ float:left;
     top:auto;
     background:#e74c3c;
     height: auto;
-
 }
 
 .card-pseudo, .card-sentence, .card-distance {
@@ -471,7 +470,7 @@ font-family: verdana;
     animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
   }
 
-    :hover {
+  .pulsebutton :hover {
       -webkit-animation: none;
       -moz-animation: none;
       animation: none;
