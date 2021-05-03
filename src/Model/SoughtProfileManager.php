@@ -44,10 +44,14 @@ class SoughtProfileManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function research(int $userID, int $gender)
+    public function research(int $gender, string $undisplayProfiles)
     {
-        $query = 'SELECT id, pseudo, catchPhrase, img_nom, town FROM profiles LEFT JOIN pictures 
-        ON profiles.id = pictures.profilId WHERE id != ' . $userID . ' AND gender = ' . $gender . ';';
+        $query = 'SELECT profiles.id, pseudo, catchPhrase, img_nom, town 
+            FROM profiles
+            LEFT JOIN pictures ON profiles.id = pictures.profilId
+            WHERE profiles.id NOT IN (' . $undisplayProfiles . ') 
+                AND gender = ' . $gender . ';';
+
         $statement = $this->pdo->query($query);
 
         return $statement->fetchAll();
@@ -81,5 +85,17 @@ class SoughtProfileManager extends AbstractManager
         $statement->bindValue('profile2Id', $profil2Id, \PDO::PARAM_INT);
 
         return $statement->execute();
+    }
+
+    public function undisplay(int $userID)
+    {
+        $query = 'SELECT profile1Id, profile2Id
+            FROM ' . APP_DB_NAME . '.match
+            WHERE profile1Id = ' . $userID . ' 
+                OR (profile2Id = ' . $userID . ' AND profile2Status != "undef")
+                OR (profile2Id = ' . $userID . ' AND profile1Status = "refuse");';
+        $statement = $this->pdo->query($query);
+
+        return $statement->fetchAll();
     }
 }
