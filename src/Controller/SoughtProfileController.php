@@ -18,7 +18,8 @@ class SoughtProfileController extends AbstractController
 
     public function resultResearch()
     {
-        $soughtGender = $_SESSION['soughtGender'];
+        $user = $this->profileManager->selectOneById($this->userID);
+        $soughtGender = $user['searchGender'];
 
         // find profiles not to display
         $undisplayProfiles = $this->profileManager->undisplay($this->userID);
@@ -33,7 +34,6 @@ class SoughtProfileController extends AbstractController
         $resultResearch = $this->aggregatePictures($resultResearch);
 
         // distance calculate
-        $user = $this->profileManager->selectOneById($this->userID);
         $userTown = $user['town'];
         $resultResearch = $this->distanceCalculate($resultResearch, $userTown);
 
@@ -61,26 +61,6 @@ class SoughtProfileController extends AbstractController
             'resultResearch' => $resultResearch,
             'userId' => $searchingId
         ]);
-    }
-
-    public function researchDisplay()
-    {
-        $errors = [];
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (!isset($_POST['gender'])) {
-                $errors[] = "Veuillez choisir le genre à rechercher.";
-            }
-
-            if (empty($errors)) {
-                $data = array_map('trim', $_POST);
-
-                $_SESSION['soughtGender'] = htmlentities($data['gender']);
-                header('Location:/soughtProfile/resultResearch/ ');
-            }
-        }
-
-        return $this->twig->render('SoughtProfile/research.html.twig', ['errors' => $errors]);
     }
 
     public function selectShow()

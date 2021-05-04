@@ -26,7 +26,7 @@ class ConnectController extends AbstractController
             if (isset($identity['pswd']) && $identity['pswd'] == $password) { /*comparaison des passwords*/
                 $_SESSION['userId'] = $identity['id']; /*création identité par ouverture session*/
 
-                return $this->twig->render('Profiles/profilesList.html.twig'); /* page liste profils*/
+                header('location:/soughtProfile/resultResearch'); /* page profils à swiper*/
             }
 
             /*renvoi sur page acceuil*/
