@@ -1,0 +1,29 @@
+<div class='hamburger'>
+<div class='toggle_btn' id='toggle_btn'>
+    <span> </span>
+</div>
+
+<div class="menu nav" id='nav'>
+        <img class="logoH" src="/assets/images/attract me if you can.png.png" alt="logo">
+        <a href="/home/index"> Acceuil </a>
+        <a href="/profile/show"> Votre profil </a>
+        <a href="/contact/create">Contact / qui sommes nous</a>
+        <a href="/soughtProfile/researchDisplay"> recherche </a>
+        <a href="/soughtProfile/selectShow"> Page des profils</a>
+ </div>
+</div>
+ {% block javascript %}
+    <script >
+        var btn = document.querySelector('#toggle_btn');
+        var nav = document.querySelector('#nav');
+          
+        btn.addEventListener('click',function(){
+        
+        nav.classList.toggle('nav_open');
+        
+        
+    });
+
+
+    </script>
+{% endblock %}

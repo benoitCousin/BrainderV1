@@ -1,13 +1,13 @@
 body
 {
 
+
  background-color: black;
  height: 100%;
  width: 100%;
  padding:0;
  box-sizing: border-box;
  margin:0;
- overflow-x :hidden;
 }
 
 
@@ -16,12 +16,18 @@ body
 {
 	display: block;
 	width: 250px;
-float:left;
+  float:left;
 }
 
 .cadre {
   padding-top:8rem;
 
+}
+.cadreHome{
+  background-image: url('../images/couple.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top:8rem;
 }
 
 /* /////// start soughtProfile.html.twig ////// */
@@ -45,6 +51,8 @@ float:left;
     top:auto;
     background:#e74c3c;
     height: auto;
+    border-radius: 25px;
+
 }
 
 .card-pseudo, .card-sentence, .card-distance {
@@ -92,6 +100,9 @@ float:left;
  from {left:30%;}
  to {left:-65%;}
 }
+.signal{
+  border-radius: 30px;
+}
 
 /* /////// end soughtProfile.html.twig ////// */
 
@@ -120,7 +131,7 @@ float:left;
  background-color: #d45b5b;
  border-radius: 10%;
  border:5px solid #F9F8F8;
- box-shadow: 10px 10px 0 #F3DE8A, 
+ box-shadow: 10px 10px 0 darkgrey, 
              20px 20px 0 #272838;
 
 }
@@ -146,7 +157,7 @@ float:left;
 .btn::before {
  content: "";
  background-color: #7E7F9A;
- box-shadow: 10px 10px 0 #F3DE8A, 
+ box-shadow: 10px 10px 0 darkgrey, 
              20px 20px 0 #272838;
  position: absolute;
  left: 0.25rem;
@@ -171,12 +182,6 @@ float:left;
 *===================== Slider CSS =========================
 *
 ==========================================================*/
-.pic-ctn {
- width: 100vw;
- height: 450px;
-
- 
-}
 
 @keyframes display {
  0% {
@@ -238,7 +243,7 @@ img:nth-child(5) {
 
 .navbar {
  font-size: 20px;
- background:darkgrey;
+ background:black;
  padding-bottom: 10px;
  position: fixed;
  width: 100%;
@@ -246,8 +251,6 @@ img:nth-child(5) {
  padding: 0;
 }
 .main-nav {
- 
- list-style-type: none;
  flex-direction: row;
  display: flex;
 }
@@ -267,7 +270,12 @@ font-weight: bold;
 }
 .nav-links
 {
- color:black;
+
+ color:white;
+ list-style-type: none;
+ text-decoration: none;
+ font-size:25px;
+
 }
 
 
@@ -279,7 +287,7 @@ font-weight: bold;
 
 
 ::selection{
-background-color: lightgreen;
+background-color:lightgreen;
 }
 
 #popup{
@@ -293,12 +301,15 @@ width: 35%;
 height: 40%;
 overflow: auto;
 background-color: rgba(0,0,0,0.8); 
+margin-left: 33%;
+margin-top: 15%;
+border-radius: 30px;
 }
 
 #popupContent{
 margin: auto;
 padding: 10px;
-border: 6px solid green;;
+border: 6px solid white;;
 width: 35%;
 height: 40%;
 }
@@ -319,7 +330,7 @@ padding: 1em;
 
 #popupContent form input[type="submit"]{
 cursor: pointer;
-background: limegreen;
+background: white;
 color: darkred;
 }
 
@@ -337,7 +348,7 @@ font-family: verdana;
 *===================== media querry CSS ===================
 *
 ==========================================================*/
-@media screen and (max-width: 1100px){
+@media screen and (max-width: 1120px){
 
 .navbar{
      display: none;
@@ -499,4 +510,95 @@ font-family: verdana;
 }  
 .inscriptionLabel{
   color:white;
+
 }
+/*=========================================================
+*
+*===================== hamburger ===================
+*
+======================================================*/
+@media screen and (min-width: 1120px){
+
+  .hamburger{
+       display: none;
+      }
+  }
+.hamburger{
+  z-index: 5;
+}
+.toggle_btn{
+  height: 30px;
+  width: 30px;
+  position: relative;
+  float: right;
+  margin-right: 10px;
+  margin-top:5px;
+  cursor:pointer;
+}
+
+.toggle_btn span{
+  height: 3px;
+  background-color: white;
+  width: 100%;
+  position:absolute;
+  top:20px;
+  left:0;
+}
+.toggle_btn span::before{
+  content: '';
+  height: 3px;
+  background-color:white;
+  width: 100%;
+  position:absolute;
+  top:-10px;
+  left:0;
+}
+.toggle_btn span::after{
+  content: '';
+  height: 3px;
+  background-color:white;
+  width: 100%;
+  position:absolute;
+  top:10px;
+  left:0;
+}
+
+.menu{
+  height: 100vh;
+  background-color: black;
+  width: 200px;
+}
+.menu a {
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+  display: block;
+  padding-top: 30px;
+  text-decoration: none;
+}
+.logoH{
+  width: 200px;
+  height: 200px;
+}
+.nav {
+  margin-left:-200px;
+  transition-duration: 0.2s;
+  position:fixed;
+  top:0;
+  height: 100vh;
+  z-index: 10;
+
+}
+.nav_open{
+  margin-left:0;
+  transition-duration: 0.2s;
+  position:fixed;
+  top:0;
+  height: 100vh;
+  z-index: 10;
+
+}
+
+
+
+
