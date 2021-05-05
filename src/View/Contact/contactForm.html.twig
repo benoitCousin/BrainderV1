@@ -1,9 +1,18 @@
 {% extends 'Contact/layout2.html.twig' %}
 
 {% block title %}Contact{% endblock %}
-
+   
+    {% block hamburgerHome %}{% if userId != 0 %}{% include 'Item/hamburger.html.twig' %} 
+    {% else %}{% include 'Item/hamburgerHome.html.twig' %} 
+    {% endif %}{% endblock %}
+    {% block navbar %}{% if userId != 0 %}{% include 'Item/navbar.html.twig' %}
+    {% else %}{% include 'Item/accueilnav.html.twig' %} 
+    {% endif %}{% endblock %}
+   
+    
 
 {% block content %}
+
 <div class="cadre">    
     <form id="contactForm" action="/contact/create" method="POST">
         <h1>Contactez notre administration:</h1>

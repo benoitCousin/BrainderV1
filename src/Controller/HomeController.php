@@ -21,6 +21,7 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        $_SESSION["userId"] = 0;
         return $this->twig->render('Home/index.html.twig');
     }
 }

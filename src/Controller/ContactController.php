@@ -25,7 +25,7 @@ class ContactController extends AbstractController
         }
 
         if (empty($_SESSION)) {
-            $_SESSION ["userId"] = 0;
+            $_SESSION["userId"] = 0;
         }
 
         $userId = $_SESSION['userId'];
