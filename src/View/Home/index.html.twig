@@ -1,40 +1,38 @@
 {% extends 'Item/layout1.html.twig' %}
+{% block navbar %}{% include 'Item/accueilnav.html.twig' %}{% endblock %}
+    {% block hamburger %}{% include 'Item/hamburgerHome.html.twig' %}{% endblock %}
 {% block content %}
-
-<div class= "cadreHome">
     
-
-        {% if error is defined %} <!--pop-up erreur-->
-        <div class= "errorPopUp">    
-            {{error}}
-        </div>
-        {% endif %}
-
+<div class= "cadre">
     
-
 <div class= "container">  
-
 
     <div class= "logo">
         <img src="/assets/images/attract me if you can.png.png" alt="logo"/>
             </div>
                 <a id="show_popup" class="btn">Connexion</a>
+                         {% if error is defined %} <!--pop-up erreur-->
+        <div class= "errorPopUp">    
+            {{error}}
+        </div>
+        {% endif %}
                 <a href="/inscription/create" class="btn">Inscription</a>
+
             
-            <div class="pic-ctn">
+        </div>
+ 
+    </div>
+    <div class="pic-ctn">
                 <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
                 <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
                 <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
                 <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
                 <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
         </div>
-            
-            </div>
- 
-    </div>
    
 
 </div>
+ 
 
                
          

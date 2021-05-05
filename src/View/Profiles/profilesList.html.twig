@@ -4,7 +4,9 @@
 
 {% block content %}
 <div class="cadre">
-    <h1>Liste des profils sélectionnés</h1>
+   
+   <div class="profileList">
+    <h1 class="titre">Liste des profils sélectionnés</h1>
     {% for profile in list %}
         <div class="select-profile">
             <div class="{{ profile.choix }}">
@@ -21,10 +23,12 @@
             <div class="select-pseudo">{{ profile.pseudo }}</div>
             <img src="../assets/images/avatars/avatar{{ profile.id }}.png">
             <div class="select-date">sélectionné le {{ profile.dateSelection }}</div>
-            <a href="/soughtProfile/deleteSelectProfile/{{ profile.id }}">Supprimer</a>
+            <a class="sup" href="/soughtProfile/deleteSelectProfile/{{ profile.id }}">Supprimer</a>
         </div>
+     
     {% endfor %}
 </div>
+ </div>  
 {% endblock %}
 
 {% block javascript %}
