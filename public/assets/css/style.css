@@ -127,8 +127,12 @@ body
  justify-content:center;
  align-items: center;
  color:white;
+ margin-top:15px;
  
 
+}
+.VotreProfil{
+  margin:0;
 }
 .logo
 {
@@ -474,12 +478,12 @@ font-family: verdana;
     height: 30px;
     font-size: 1.3em;
     font-weight: bold;
-    color: #3a89de;
+    color: white;
     border: none;
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 0 0 rgba(15, 15, 15, 0.7);
     border-radius: 100%;
     vertical-align: middle;
-    background: #fff;
+    background:black;
     cursor: pointer;
     -webkit-animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
     -moz-animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
