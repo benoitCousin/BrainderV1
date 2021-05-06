@@ -33,15 +33,18 @@ class ProfileManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function update($email, $password, $birthday, $pseudo, $town, $id): bool
+    public function update($email, $password, $birthday, $pseudo, $town, $catchPhrase, $searchGender, $id): bool
     {
         $statement = $this->pdo->prepare("UPDATE  profiles SET email=:email, pswd=:pswd, 
-            birthday=:birthday, pseudo=:pseudo ,town=:town WHERE id =:id");
+            birthday=:birthday, pseudo=:pseudo ,town=:town, catchPhrase=:catchPhrase, 
+            searchGender=:searchGender WHERE id =:id");
         $statement->bindValue(':email', $email, \PDO::PARAM_STR);
         $statement->bindValue(':pswd', $password, \PDO::PARAM_STR);
         $statement->bindParam(':birthday', $birthday, \PDO::PARAM_STR);
         $statement->bindParam(':pseudo', $pseudo, \PDO::PARAM_STR);
         $statement->bindValue(':town', $town, \PDO::PARAM_STR);
+        $statement->bindValue(':catchPhrase', $catchPhrase, \PDO::PARAM_STR);
+        $statement->bindValue(':searchGender', $searchGender, \PDO::PARAM_INT);
         $statement->bindParam(':id', $id, \PDO::PARAM_INT);
 
 
@@ -56,6 +59,20 @@ class ProfileManager extends AbstractManager
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':img_nom', $imgNom, \PDO::PARAM_STR);
         $statement->bindValue(':profilId', $profilId, \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+
+    public function showPictures($profilId): array
+    {
+        $query = 'SELECT img_nom, img_id FROM pictures WHERE profilId = ' . $profilId . ';';
+        return $this->pdo->query($query)->fetchAll();
+    }
+
+    public function deletePicture(int $id): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM pictures WHERE img_id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
 }

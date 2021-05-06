@@ -37,7 +37,7 @@ class InscriptionController extends AbstractController
             $manager->insert($lastName, $firstName, $email, $password, $sexe, $birthday);
             $userId = $manager->selectOne($email, $password);//recuperation de l'id.
             $_SESSION ['userId'] = $userId ['id'];
-                header('location:/Profile/show');
+                header('location:/Avatar/avatarCreate');
         }
 
         return $this->twig->render('Inscription/form.html.twig');

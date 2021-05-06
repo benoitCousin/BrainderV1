@@ -4,72 +4,234 @@
 
  
 
+<style>
+.cadre {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.picture {
+	display: flex;
+	padding-top: 4em;
+}
+
+	.form-containers
+{ 
+ width: 90%;
+ display: flex;
+ flex-direction: column;
+ justify-content:center;
+ align-items: center;
+ margin: auto;
+}
+
+.form-containers>h1 {
+	color: white;
+	text-align: center;
+}
 
 
+
+  button {
+    font-size: 14px;
+    background-color: #5867dd;
+    border: none;
+    color: #fff;
+    padding: 0.65em 1em;
+    line-height: 1.5;
+    border-radius: 0.25em;
+    cursor: pointer;
+  }
+
+  h2{
+	  color: white;
+  }
+
+  h3{
+	  text-align: center;
+	  color: white;
+	  font-size: xx-large;
+  }
+
+  .drop{
+	  margin: auto;
+	  width: 70%;
+	  /*float:right;
+		margin-top: -60%;
+	  margin-right: 15px;*/
+  }
+
+  img{
+	width: 120px;
+	height: 120px;
+	margin: 0.5em;
+  }
+
+ 
+  .Bouton{
+	  text-align: center;
+  }
+
+  .inscriptionLabel {
+	  font-size: x-large;
+  }
+
+.pictures {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.card-user form {
+	display: flex;
+	justify-content: center;
+}
+
+#deleteButton {
+	display: block;
+	text-align: center;
+	margin-bottom: 2em;
+}
+
+#left-col {
+	display: flex;
+	flex-direction: column;
+}
+
+#right-col {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	
+}
+
+.gender-btn {
+	color: white;
+	font-size: x-large;
+}
+ 
+</style>
+
+
 <div class ="cadre">
-	<div class="container">
-		<h1 class="VotreProfil" >Votre Profil</h1>
-		<br/>
-		<form method="POST" action="update" enctype="multipart/form-data">
-			<div class="form-row">
-				<div class="col-md-4 mb-3">
-					<br/> <!--random avatar creation button-->
-					<input type="button" value="Nouvel avatar"/ onclick="window.location.href = '/avatar/avatarCreate';">
-					<img src="../assets/images/avatars/avatar{{user.id}}.png"> <!--création image avatarId.png-->	
-				</div>
-				<div class="col-md-4 mb-3">
-					<label class="inscriptionLabel" for ="Firstname">Nom :</label>
-					<input type="text" placeholder="Nom" value= "{{user.firstName}}" id="firstname" name="Firstname"/>
-					<br><br>
-				</div>
-				<div class="col-md-4 mb-3">
-					<label class="inscriptionLabel" for ="Lastname">Prenom:</label>
-					<input type="text" placeholder="Prénom" value= "{{user.lastName}}" id="Lastname" name="Lastname"/>
-					<br><br>
-				</div>
-			
-				<div class="col-md-4 mb-3">
-					<label class="inscriptionLabel" for ="pseudo">Pseudo :</label>
-					<input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo"/>
-					<br><br>
-				</div>
-				<div class="col-md-4 mb-3">
-						<label class="inscriptionLabel" for ="Birthday">Votre date de naissance :</label>
-						<input type="date" placeholder="birthday"  value= "{{user.birthday}}" id="birthday" name="birthday"/>
+	<div class ="picture">
+		<div class="form-containers">
+			<h1>Bienvenue dans votre Profil {{user.lastName}}</h1>
+			<br/><br/>
+			<form id="up-form" method="POST" action="update" enctype="multipart/form-data">
+				<div id="left-col">
+					<div class="col-md-4 mb-3">
+					
+						<br/> <!--random avatar creation button-->
+						<input type="button" value="Nouvel avatar"/ onclick="window.location.href = '/avatar/avatarCreate';">
+						<img src="../assets/images/avatars/avatar{{user.id}}.png"> <!--création image avatarId.png-->
 						<br><br>
-				</div>
-				<div class="col-md-4 mb-3">
-					<label class="inscriptionLabel" for ="town">Votre ville :</label>
-					<input type="text" placeholder="Ou habitez vous ?"   id="town" name="town"/>
-					<br><br>
-				</div>
-				<div class="col-md-4 mb-3">
-						<label class="inscriptionLabel" for ="mail">Mail :</label>
-						<input type="email" placeholder="Votre mail" value= "{{user.email}}" id="mail" name="mail"/>
+					</div>
+				
+					<div class="col-md-4 mb-3">
+						<label class="inscriptionLabel" for ="Firstname">Nom :</label>
+						<input type="text" placeholder="Nom" value= "{{user.firstName}}" id="firstname" name="Firstname"/>
 						<br><br>
-				</div>
-				<div class="col-md-4 mb-3">
-							<label class="inscriptionLabel" for ="password">Mot de passe :</label>
-							<input type="password" placeholder=" Votre mot de passe" id="password" name="pswd"/>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label class="inscriptionLabel" for ="Lastname">Prenom:</label>
+						<input type="text" placeholder="Prénom" value= "{{user.lastName}}" id="Lastname" name="Lastname"/>
+						<br><br>
+					</div>
+				
+					<div class="col-md-4 mb-3">
+						<label class="inscriptionLabel" for ="pseudo">Pseudo :</label>
+						<input type="text" placeholder="Votre pseudo" value= "{{user.pseudo}}" id="pseudo" name="pseudo" required/>
+						<br><br>
+					</div>
+					<div class="col-md-4 mb-3">
+							<label class="inscriptionLabel" for ="birthday">Votre date de naissance :</label>
+							<input type="date" placeholder="birthday"  value= "{{user.birthday}}" id="birthday" name="birthday"/>
 							<br><br>
-				</div>
-				<div class="col-md-4 mb-3">
-					<label class="inscriptionLabel" for ="catchPhrase">Votre phrase d'accroche:</label>
-					<input type="text" placeholder="Votre phrase d'accroche" id="catchPhrase" name="catchPhrase"/>
-					<br><br>
-				</div>
-				<div class="col-md-4 mb-3">
-						<label class="inscriptionLabel" for="imageUpload">Créez votre univers</label>  
-						<input type="file" name="picture" id="imageUpload" /><br>
+					</div>
+
+					<div class="col-md-4 mb-3">
+						<label class="inscriptionLabel" for ="town">Votre ville :</label>
+						<input type="text" placeholder="Ou habitez vous ?"  value= "{{user.town}}" id="town" name="town" required/>
 						<br><br>
+					</div>
+
+					<div class="col-md-4 mb-3">
+							<label class="inscriptionLabel" for ="mail">Mail :</label>
+							<input type="email" placeholder="Votre mail" value= "{{user.email}}" id="mail" name="mail"/>
+							<br><br>
+					</div>
+					<div class="col-md-4 mb-3">
+								<label class="inscriptionLabel" for ="password">Mot de passe :</label>
+								<input type="password" placeholder=" Votre mot de passe" value= "{{user.pswd}}"id="password" name="pswd"/>
+								<br><br>
+					</div>
+
+					<div class="col-md-4 mb-3">
+						<label class="inscriptionLabel" for ="catchPhrase">Votre Catch'Phrase</label>
+						<input type="text" placeholder="CatchPhrase" value= "{{user.catchPhrase}}" id="catchPhrase" name="catchPhrase"/>
+						<br><br>
+					</div>
+				
+					<h2>Choisissez  avec qui vous aimeriez tchatter:</h2>
+					
+					<div class="col-md-4 mb-3">
+						<label class="inscriptionLabel" for ="searchGender"></label>
+						{% if user.searchGender == 0  %}
+							<input type="radio" name="searchGender" value="0"checked>
+							<label class="gender-btn">Homme</label>
+							<input type="radio" name="searchGender" value="1">
+							<label class="gender-btn">Femme</label>
+						{% else %}
+							<input type="radio" name="searchGender" value="0">
+							<label class="gender-btn">Homme</label>
+							<input type="radio" name="searchGender" value="1"checked>
+							<label class="gender-btn">Femme</label>
+						{% endif %}
+					</div>
 				</div>
-				<div class="col-md-4 mb-3">
-					<button class="btn btn-primary" type="submit">Enregister</button>
+
+				<div id="right-col">
+					
+					<div class = "Bouton">	
+						<div class="col-md-4 mb-3">
+							<button class="btn btn-primary" type="submit">Enregister</button>
+						</div>
+					</div>
+					<h3>Importer Vos Photos</h3>
+					<input type="file" name="files[]"  label=" faites glisser vos photos ou cliquer ici." help="Max 10 photos" is="drop-files" multiple />
 				</div>
+				
+			</form>
+		</div>
+	</div>
+	<br><br><br>
+
+	<script type="module" src="//unpkg.com/@grafikart/drop-files-element"></script>
+
+	<div class ="drop">
+		<br><br><br>
+		<h3>Voici les photos de votre univers</h3>
+		<div class ="pictures"  >
+			<div class="card"style="widht:18rem;"></div>
+				{% for picture in pictures %}
+					<div class="card-user">
+						<div class="img-user">
+							<img class="img-card-user" src="/assets/images/profile/{{ picture.img_nom }}" alt="">
+						</div>
+						<form method="POST" action="show" name="delete">
+							<input type="hidden" id="delete" name="delete" value="/public/assets/images/profile/{{ picture.img_nom }}"/>
+							<input type="hidden" id="deleteId" name="deleteId" value="{{ picture.img_id }}"/>
+							<input type="submit" id="deleteButton" name="deleteButton" value="supprimer" />		
+						</form>
+					</div>
+				{% endfor %}
 			</div>
-		</form>
+		</div>
 	</div>
 </div>
-
+  
 {% endblock %}
