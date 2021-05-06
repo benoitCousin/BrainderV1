@@ -117,6 +117,37 @@
 
 
 <div class ="cadre">
+
+	<div class="container">
+		<h1 class="VotreProfil" >Votre Profil</h1>
+		<br/>
+		<form method="POST" action="update" enctype="multipart/form-data">
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+					<br/> <!--random avatar creation button-->
+					<input type="button" value="Nouvel avatar"/ onclick="window.location.href = '/avatar/avatarCreate';">
+					<img src="../assets/images/avatars/avatar{{user.id}}.png"> <!--création image avatarId.png-->	
+				</div>
+				<div class="col-md-4 mb-3">
+					<label class="inscriptionLabel" for ="Firstname">Nom :</label>
+					<input type="text" placeholder="Nom" value= "{{user.firstName}}" id="firstname" name="Firstname"/>
+					<br><br>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label class="inscriptionLabel" for ="Lastname">Prenom:</label>
+					<input type="text" placeholder="Prénom" value= "{{user.lastName}}" id="Lastname" name="Lastname"/>
+					<br><br>
+				</div>
+			
+				<div class="col-md-4 mb-3">
+					<label class="inscriptionLabel" for ="pseudo">Pseudo :</label>
+					<input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo"/>
+					<br><br>
+				</div>
+				<div class="col-md-4 mb-3">
+						<label class="inscriptionLabel" for ="Birthday">Votre date de naissance :</label>
+						<input type="date" placeholder="birthday"  value= "{{user.birthday}}" id="birthday" name="birthday"/>
+
 	<div class ="picture">
 		<div class="form-containers">
 			<h1>Bienvenue dans votre Profil {{user.lastName}}</h1>
