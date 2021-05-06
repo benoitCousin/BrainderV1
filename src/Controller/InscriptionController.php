@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\InscriptionManager;
+use App\Model\ConnectManager;
 
 class InscriptionController extends AbstractController
 {
@@ -33,6 +34,18 @@ class InscriptionController extends AbstractController
                 $sexe = htmlentities($user['sexe']);
                 $password = htmlentities($user['pswd']);
             }
+
+            $errors = [];
+            $mailManager = new ConnectManager();
+            $existingMail = $mailManager->selectOneByMail($email);
+
+            if ($existingMail != false) {
+                $errors[] = "Erreur: cette adresse e-mail est déjà associée à un compte. " .
+                "Veuillez utiliser une autre adresse e-mail.";
+                return $this->twig->render('Inscription/form.html.twig', ['errors' => $errors]);
+            }
+
+
             $manager = new InscriptionManager();
             $manager->insert($lastName, $firstName, $email, $password, $sexe, $birthday);
             $userId = $manager->selectOne($email, $password);//recuperation de l'id.
