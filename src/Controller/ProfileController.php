@@ -55,6 +55,23 @@ class ProfileController extends AbstractController
             $searchGender = htmlentities($user['searchGender']);
             $id =  $_SESSION ['userId'];
 
+            $profileManager = new ProfileManager();
+            $existingPseudo = $profileManager->selectOneByPseudo($pseudo);
+            $errors = [];
+
+            if ($existingPseudo != false && $existingPseudo['id'] != $id) {
+                $errors[] = "Erreur: ce pseudo est déjà utilisé. " .
+                "Veuillez en choisir un autre.";
+                $userId = $_SESSION ['userId'];
+                $user = $profileManager->selectOneById($userId);
+                $pictures =  $profileManager->showPictures($userId);
+                return $this->twig->render('Profiles/profile.html.twig', [
+                    'errors' => $errors,
+                    'user' => $user,
+                    'pictures' => $pictures
+                ]);
+            }
+
             $uploadDir = 'assets/images/profile/';
 
             // Count total files

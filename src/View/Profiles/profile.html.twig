@@ -112,6 +112,11 @@
 	color: white;
 	font-size: x-large;
 }
+
+.form-containers p {
+	color: white;
+	font-size: large;
+}
  
 </style>
 
@@ -120,7 +125,13 @@
 	<div class ="picture">
 		<div class="form-containers">
 			<h1>Bienvenue dans votre Profil {{user.lastName}}</h1>
-			<br/><br/>
+			<br/>
+				{% if errors is not empty %}
+					{% for error in errors %}
+					<p>{{ error }}</p>
+					{% endfor %}
+				{% endif %}
+			<br/>
 			<form id="up-form" method="POST" action="update" enctype="multipart/form-data">
 				<div id="left-col">
 					<div class="col-md-4 mb-3">

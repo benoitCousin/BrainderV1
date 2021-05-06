@@ -75,4 +75,14 @@ class ProfileManager extends AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
+
+    public function selectOneByPseudo(string $pseudo)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("SELECT pseudo, id FROM " . static::TABLE . " WHERE pseudo=:pseudo");
+        $statement->bindValue('pseudo', $pseudo, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }
