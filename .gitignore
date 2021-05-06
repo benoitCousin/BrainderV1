@@ -2,5 +2,5 @@
 /temp/*
 .phpcs-cache
 *.cache
-db.php
 .idea
+db.php

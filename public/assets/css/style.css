@@ -449,6 +449,7 @@ font-family: verdana;
   margin:3REm;
   background-color: antiquewhite;
   font-size: xx-large;
+  color:black;
   
 }
 
@@ -623,7 +624,7 @@ font-family: verdana;
   height: 200px;
 }
 .nav {
-  margin-left:-200px;
+  margin-left:-210px;
   transition-duration: 0.2s;
   position:fixed;
   top:0;
