@@ -16,6 +16,7 @@ class InscriptionController extends AbstractController
             $sexe = $_POST['sexe'];
             $password = $_POST['pswd'];
             $birthday = $_POST['birthday'];
+            $acceptCGV = $_POST['acceptCGV'];
 
 
 
@@ -25,7 +26,8 @@ class InscriptionController extends AbstractController
                 isset($_POST['Firstname']) &&
                 isset($_POST['mail']) &&
                 isset($_POST['sexe']) &&
-                isset($_POST['pswd'])
+                isset($_POST['pswd']) &&
+                isset($_POST['acceptCGV'])
             ) {
                 $user = array_map('trim', $_POST);
                 $lastName = htmlentities($user['Lastname']);
@@ -33,6 +35,7 @@ class InscriptionController extends AbstractController
                 $email = htmlentities($user['mail']);
                 $sexe = htmlentities($user['sexe']);
                 $password = htmlentities($user['pswd']);
+                $acceptCGV = htmlentities($user['acceptCGV']);
             }
 
             $errors = [];
@@ -47,7 +50,7 @@ class InscriptionController extends AbstractController
 
 
             $manager = new InscriptionManager();
-            $manager->insert($lastName, $firstName, $email, $password, $sexe, $birthday);
+            $manager->insert($lastName, $firstName, $email, $password, $sexe, $birthday, $acceptCGV);
             $userId = $manager->selectOne($email, $password);//recuperation de l'id.
             $_SESSION ['userId'] = $userId ['id'];
                 header('location:/Avatar/avatarCreate');
