@@ -6,7 +6,7 @@
 <div class="cadrePr">
     <div id="soughtProfilesContainer">
         <h1>Profil trouvé</h1>
-        <H2>⬅️ swipe à gauche pour oublier ou à droite pour matcher ➡️</H2>
+        <H2><input type="button" value ="⬅️" id ="btnLeft"> swipe à gauche pour oublier ou à droite pour matcher <input type="button" value ="➡️" id ="btnRight"></H2>
         <button class='signal'onclick="signalConfirm()">Signaler ce profil !</button>
     </div>
     <div id="profileCard">
@@ -40,6 +40,30 @@
         const profileId = document.getElementById('profile').value;
         const profilePseudo = document.getElementById('pseudo').value;
         const searchingId = document.getElementById('searchingId').value;
+
+        //modif° btn***************
+        var btnL = document.getElementById('btnLeft'); //Left button
+        var btnR = document.getElementById('btnRight'); //Right button
+
+        btnL.addEventListener('click', leftBtn);
+        btnR.addEventListener('click', rightBtn);
+
+        function leftBtn() {
+            profileCard.setAttribute("class", "leftMove");
+                setTimeout(() => {
+                    document.location.href="/soughtProfile/matchUpdate/"+searchingId+"/"+profileId+"/refuse";
+                }, 1000);
+            
+        }
+        
+        function rightBtn() {
+            profileCard.setAttribute("class", "rightMove");
+                setTimeout(() => {
+                        document.location.href="/soughtProfile/matchUpdate/"+searchingId+"/"+profileId+"/accept";
+                }, 1000);
+            
+        }
+        //modif° btn***************
 
         if (profileId != '') {
             console.log(profileId);
