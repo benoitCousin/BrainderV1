@@ -98,4 +98,14 @@ class SoughtProfileManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function undisplayNoPseudo()
+    {
+        $query = 'SELECT id
+            FROM profiles
+            WHERE pseudo IS NULL OR pseudo = "";';
+        $statement = $this->pdo->query($query);
+
+        return $statement->fetchAll();
+    }
 }

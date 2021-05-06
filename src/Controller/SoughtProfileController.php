@@ -23,9 +23,10 @@ class SoughtProfileController extends AbstractController
 
         // find profiles not to display
         $undisplayProfiles = $this->profileManager->undisplay($this->userID);
+        $noPseudoProfiles = $this->profileManager->undisplayNoPseudo();
 
         // convert multi dimensional array in string
-        $undisplayResult = $this->undisplayProfiles($undisplayProfiles, $this->userID);
+        $undisplayResult = $this->undisplayProfiles($undisplayProfiles, $noPseudoProfiles, $this->userID);
 
         // search new profiles to see
         $resultResearch = $this->profileManager->research($soughtGender, $undisplayResult);
@@ -91,12 +92,15 @@ class SoughtProfileController extends AbstractController
         ]);
     }
 
-    public function undisplayProfiles(array $undisplayProfiles, int $userID): string
+    public function undisplayProfiles(array $undisplayProfiles, array $noPseudoProfiles, int $userID): string
     {
         $undisplayResult = [];
         foreach ($undisplayProfiles as $profile) {
             $undisplayResult[] = $profile['profile1Id'];
             $undisplayResult[] = $profile['profile2Id'];
+        }
+        foreach ($noPseudoProfiles as $profile) {
+            $undisplayResult[] = $profile['id'];
         }
         $undisplayResult = array_unique($undisplayResult);
         $undisplayResult = implode(', ', $undisplayResult);
