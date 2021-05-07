@@ -74,6 +74,9 @@ class ProfileController extends AbstractController
 
             $uploadDir = 'assets/images/profile/';
 
+
+
+
             // Count total files
             $countFiles = count($_FILES['files']['name']);
             $extensionsOk = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
@@ -117,7 +120,6 @@ class ProfileController extends AbstractController
             $profileManager->update($email, $password, $birthday, $pseudo, $town, $catchPhrase, $searchGender, $id);
             header('Location:/SoughtProfile/resultResearch');
         }
-
 
 
         return $this->twig->render('Profiles/profile.html.twig');
