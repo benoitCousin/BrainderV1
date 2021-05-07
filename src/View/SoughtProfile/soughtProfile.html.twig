@@ -17,7 +17,9 @@
         <div class= "contentimg">
             <div class='hotspot '>
                 <div class="button-wrap">
+                {% if resultResearch.0.img_nom.0 is not empty %}              
                     <button onclick="" id='pulsebutton' class='pulsebutton'>+</button>
+                {% endif %}
                      {% for img in resultResearch.0.img_nom %}
                            <div class="imgProfile"> <img class="imgcard"src="/assets/images/profile/{{ img }}" alt=""> </div>
                      {% endfor %}
