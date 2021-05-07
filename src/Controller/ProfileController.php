@@ -76,11 +76,31 @@ class ProfileController extends AbstractController
 
             // Count total files
             $countFiles = count($_FILES['files']['name']);
+            $extensionsOk = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
             // Looping all files
             for ($i = 0; $i < $countFiles; $i++) {
-                $imgNom = basename($_FILES['files']['name'][$i]);
-                $uploadFile = $uploadDir . basename($_FILES['files']['name'][$i]);
+                $extension = pathinfo($_FILES['files']['name'][$i], PATHINFO_EXTENSION);
+
+                if (!in_array($extension, $extensionsOk)) {
+                    $errors[0] = "L'extension [" . $extension . "] du fichier [" . $_FILES['files']['name'][$i] . "]
+                    est invalide. Les types autorisés sont [ ";
+                    foreach ($extensionsOk as $ext) {
+                        $errors[0] .= $ext . ", ";
+                    }
+                    $errors[0] .= "].";
+                    $userId = $_SESSION ['userId'];
+                    $user = $profileManager->selectOneById($userId);
+                    $pictures =  $profileManager->showPictures($userId);
+                    return $this->twig->render('Profiles/profile.html.twig', [
+                        'errors' => $errors,
+                        'user' => $user,
+                        'pictures' => $pictures
+                    ]);
+                }
+
+                $imgNom = uniqid("") . "." . $extension;
+                $uploadFile = $uploadDir . $imgNom;
 
                 if (!empty($imgNom)) {
                     $profileManager = new ProfileManager();
