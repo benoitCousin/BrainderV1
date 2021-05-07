@@ -79,35 +79,37 @@ class ProfileController extends AbstractController
             $extensionsOk = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
             // Looping all files
-            for ($i = 0; $i < $countFiles; $i++) {
-                $extension = pathinfo($_FILES['files']['name'][$i], PATHINFO_EXTENSION);
+            if ($_FILES['files']['name'][0] != '') {
+                for ($i = 0; $i < $countFiles; $i++) {
+                    $extension = pathinfo($_FILES['files']['name'][$i], PATHINFO_EXTENSION);
 
-                if (!in_array($extension, $extensionsOk)) {
-                    $errors[0] = "L'extension [" . $extension . "] du fichier [" . $_FILES['files']['name'][$i] . "]
-                    est invalide. Les types autorisés sont [ ";
-                    foreach ($extensionsOk as $ext) {
-                        $errors[0] .= $ext . ", ";
+                    if (!in_array($extension, $extensionsOk)) {
+                        $errors[0] = "L'extension [" . $extension . "] du fichier [" . $_FILES['files']['name'][$i] . "]
+                        est invalide. Les types autorisés sont [ ";
+                        foreach ($extensionsOk as $ext) {
+                            $errors[0] .= $ext . ", ";
+                        }
+                        $errors[0] .= "].";
+                        $userId = $_SESSION ['userId'];
+                        $user = $profileManager->selectOneById($userId);
+                        $pictures =  $profileManager->showPictures($userId);
+                        return $this->twig->render('Profiles/profile.html.twig', [
+                            'errors' => $errors,
+                            'user' => $user,
+                            'pictures' => $pictures
+                        ]);
                     }
-                    $errors[0] .= "].";
-                    $userId = $_SESSION ['userId'];
-                    $user = $profileManager->selectOneById($userId);
-                    $pictures =  $profileManager->showPictures($userId);
-                    return $this->twig->render('Profiles/profile.html.twig', [
-                        'errors' => $errors,
-                        'user' => $user,
-                        'pictures' => $pictures
-                    ]);
+
+                    $imgNom = uniqid("") . "." . $extension;
+                    $uploadFile = $uploadDir . $imgNom;
+
+                    if (!empty($imgNom)) {
+                        $profileManager = new ProfileManager();
+                        $profileManager->uploadPictures($imgNom, $id);
+                    }
+
+                    move_uploaded_file($_FILES['files']['tmp_name'][$i], $uploadFile);
                 }
-
-                $imgNom = uniqid("") . "." . $extension;
-                $uploadFile = $uploadDir . $imgNom;
-
-                if (!empty($imgNom)) {
-                    $profileManager = new ProfileManager();
-                    $profileManager->uploadPictures($imgNom, $id);
-                }
-
-                move_uploaded_file($_FILES['files']['tmp_name'][$i], $uploadFile);
             }
 
 
