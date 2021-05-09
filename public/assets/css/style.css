@@ -1,6 +1,6 @@
 body
 {
- background: no-repeat fixed center center/100% url('../images/couple.jpg');
+ /*background: no-repeat fixed center center/100% url('../images/couple.jpg');*/
  background-color: black;
  height: 100%;
  width: 100%;
@@ -12,8 +12,17 @@ body
 }
 .cadrePr{
   padding-top:6rem;
-
 }
+
+  #myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+  }
+
 
 
 
@@ -124,10 +133,10 @@ body
  height: 100vh;
  display: flex;
  flex-direction: column;
- justify-content:center;
+ /*justify-content:center;*/
  align-items: center;
  color:white;
- margin-top:15px;
+ margin-top:0;
  
 
 }
@@ -144,9 +153,31 @@ body
              20px 20px 0 #272838;
 
 }
+.btn
+{
+    
+    color: #0087b4;
+    background-color: #fff;
+    margin:20px;
+    border: 2px solid #f5f5f5;
+    border-radius: 25px;
+    cursor: pointer;
+
+    font-family: Roboto,Open Sans,Helvetica,Arial,sans-serif;
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    background:ivory;
+    background-position: 50%;
+    padding: 10px 30px;
+    color:black;
+    text-decoration: none;
+    
+}
 
 
-.btn {
+/*.btn {
  background-color: #7E7F9A;
  border: 5px solid #F9F8F8;
  color:black;
@@ -183,7 +214,7 @@ body
  top: 0;
  width: 100%;
  height: 100%;
-}
+}*/
 
 
 /*=========================================================
@@ -581,7 +612,7 @@ font-family: verdana;
 
 .toggle_btn span{
   height: 3px;
-  background-color: white;
+  background-color: black;
   width: 100%;
   position:absolute;
   top:20px;
@@ -590,7 +621,7 @@ font-family: verdana;
 .toggle_btn span::before{
   content: '';
   height: 3px;
-  background-color:white;
+  background-color:black;
   width: 100%;
   position:absolute;
   top:-10px;
@@ -599,7 +630,7 @@ font-family: verdana;
 .toggle_btn span::after{
   content: '';
   height: 3px;
-  background-color:white;
+  background-color:black;
   width: 100%;
   position:absolute;
   top:10px;
