@@ -2,43 +2,37 @@
 {% block navbar %}{% include 'Item/accueilnav.html.twig' %}{% endblock %}
     {% block hamburger %}{% include 'Item/hamburgerHome.html.twig' %}{% endblock %}
 {% block content %}
-    
+
 <div class= "cadre">
+    <video autoplay muted loop id="myVideo">
+        <source src="../assets/video/fondhome.mp4" type="video/mp4">
+    </video>
     
-<div class= "container">  
-
-    <div class= "logo">
-        <img src="/assets/images/attract me if you can.png.png" alt="logo"/>
-            </div>
-                <a id="show_popup" class="btn">Connexion</a>
-                         {% if error is defined %} <!--pop-up erreur-->
-        <div class= "errorPopUp">    
-            {{error}}
-        </div>
-        {% endif %}
-                <a href="/inscription/create" class="btn">Inscription</a>
-
+   <div class= "container">  
+                    
+                    <a id="show_popup" class="btn">Connexion</a>
+                            {% if error is defined %} <!--pop-up erreur-->
             
-        </div>
- 
-    </div>
-    <div class="pic-ctn">
-                <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
-                <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
-                <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
-                <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
-                <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
-        </div>
-   
-
-</div>
- 
-
-               
-         
-
-
+                <div class= "errorPopUp">    
+                        {{error}}
+                </div>
+                            {% endif %}
+                    
+                    <a href="/inscription/create" class="btn">Inscription</a>
+            
     
+        
+            <!--<div class="pic-ctn">
+                    <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
+                    <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
+                    <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
+                    <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
+                    <img src="/assets/images/profile/exemple.jpg" alt="" class="pic">
+            </div>-->
+        
+        
+    </div>
+ 
 
         <div id="popup">
             <div id="popupContent">
@@ -69,6 +63,7 @@
                 popup.style.display = "none";
             }
         };
+        
     </script>
 
 {% endblock %}
