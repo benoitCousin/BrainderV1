@@ -12,31 +12,53 @@
     
 
 {% block content %}
-
-<div class="cadre">    
+<div class="cadreContact">
+            
     <form id="contactForm" action="/contact/create" method="POST">
-        <h1>Contactez notre administration:</h1>
-
-        <p>
-            <label for="subject">Sujet</label>
-            <input id="subject" name="subject" placeholder="Ecrivez l'objet de la demande" required/>
-        </p>
-
-        <p>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="10" cols="120" required></textarea>
-        </p>
-
-        <p>
-            <input id="contactButton" type="submit" value="Envoyer"/>
-        </p>
-
+        <div class="row">
+                <h1>Contact:</h1>
+        </div>
+            <div class="row">
+                    <h4 style="text-align:center">remplissez ce formulaire</h4>
+            </div>
+        <div class="row input-container">
+                <div class="col-xs-12">
+                    <div class="styled-input wide">
+                        <input id="name" name="subject" type="text" required />
+                        <label for="subject">Nom</label> 
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="styled-input">
+                        <input type="text" required />
+                        <label>Email</label> 
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="styled-input" style="float:right;">
+                        <input type="text" required />
+                        <label>Telephone</label> 
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="styled-input wide">
+                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div id="contactbutton" type="submit" value="Envoyer"class="btn-lrg submit-btn">Envoyer</div>
+                </div>
+        </div>
         <input type="hidden" id="profilId" name="profilId" value={{userId}}>
         <input type="hidden" id="signalId" name="signalId" value={{signalId}}>
         <input type="hidden" id="signalPseudo" name="signalPseudo" value={{signalPseudo}}>
  
     </form>
-</div>    
+     <video autoplay muted loop id="myVideo">
+            <source src="../assets/video/fondhome.mp4" type="video/mp4">
+    </video> 
+</div>
 {% endblock %}
 
 {% block javascript %}
