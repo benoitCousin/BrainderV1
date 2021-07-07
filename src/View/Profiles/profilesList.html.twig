@@ -3,7 +3,10 @@
 {% block title %}Sélection de profils{% endblock %}
 
 {% block content %}
-<div class="cadre">
+<div class= "cadre">
+    <video autoplay muted loop id="myVideo">
+        <source src="../assets/video/fondhome.mp4" type="video/mp4">
+    </video>
    
    <div class="profileList">
     <h1 class="titre">Liste des profils sélectionnés</h1>
@@ -21,14 +24,14 @@
                  </p>
             </div>
             <div class="select-pseudo">{{ profile.pseudo }}</div>
-            <img src="/../assets/images/avatars/avatar{{ profile.id }}.png">
+            <img class="avatarList" src="/../assets/images/avatars/avatar{{ profile.id }}.png">
             <div class="select-date">sélectionné le {{ profile.dateSelection }}</div>
             <a class="sup" href="/soughtProfile/deleteSelectProfile/{{ profile.id }}">Supprimer</a>
         </div>
      
     {% endfor %}
 </div>
- </div>  
+ 
 {% endblock %}
 
 {% block javascript %}

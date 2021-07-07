@@ -5,17 +5,14 @@
  
 
 <style>
-.cadre {
+/*.cadre {
   display:flex;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 1em;
-}
+}*/
 
-.picture {
-	display: flex;
-	padding-top: 4em;
-}
+
 
 	.form-containers
 { 
@@ -27,8 +24,8 @@
  margin: auto;
 }
 
-.form-containers>h1 {
-	color: white;
+.bienvenue {
+	color: black;
 	text-align: center;
 }
 
@@ -63,11 +60,7 @@
 	  margin-right: 15px;*/
   }
 
-  img{
-	width: 120px;
-	height: 120px;
-	margin: 0.5em;
-  }
+ 
 
  
   .Bouton{
@@ -122,9 +115,12 @@
 
 
 <div class ="cadre">
+<video autoplay muted loop id="myVideo">
+        <source src="../assets/video/fondhome.mp4" type="video/mp4">
+    </video>
 	<div class ="picture">
 		<div class="form-containers">
-			<h1>Bienvenue dans votre Profil {{user.lastName}}</h1>
+			<h1 class="bienvenue">Bienvenue sur votre Profil {{user.lastName}}</h1>
 			<br/>
 				{% if errors is not empty %}
 					{% for error in errors %}
@@ -134,10 +130,10 @@
 			<br/>
 			<form id="up-form" method="POST" action="update" enctype="multipart/form-data">
 				<div id="left-col">
-					<div class="col-md-4 mb-3">
+					<div class="boxAvatar">
 					<br/> <!--random avatar creation button-->
 						<input type="button" value="Nouvel avatar"/ onclick="window.location.href = '/avatar/avatarCreate';">
-						<img src="../assets/images/avatars/avatar{{user.id}}.png"> <!--création image avatarId.png-->
+						<img class="avatar"src="../assets/images/avatars/avatar{{user.id}}.png"> <!--création image avatarId.png-->
 						<br><br>
 					</div>
 				

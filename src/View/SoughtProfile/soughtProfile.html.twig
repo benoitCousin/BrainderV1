@@ -3,6 +3,9 @@
 {% block title %}Affichage des profils{% endblock %}
 
 {% block content %}
+    <video autoplay muted loop id="myVideo">
+        <source src="../assets/video/fondhome.mp4" type="video/mp4">
+    </video>
 <style>
     img{
 	width: 120px;
@@ -13,7 +16,7 @@
 <div class="cadrePr">
     <div id="soughtProfilesContainer">
         <h1>Profil trouvé</h1>
-        <H2><input type="button" value ="⬅️" id ="btnLeft"> swipe à gauche pour oublier ou à droite pour matcher <input type="button" value ="➡️" id ="btnRight"></H2>
+        <H2><input class="btn" type="button" value ="⬅️" id ="btnLeft"> swipe à gauche pour oublier ou à droite pour matcher <input class="btn" type="button" value ="➡️" id ="btnRight"></H2>
         <button class='signal'onclick="signalConfirm()">Signaler ce profil !</button>
     </div>
     <div id="profileCard">
@@ -36,6 +39,7 @@
         </div>
 
     </div>
+    
 {# to transfer twig variables into JS code by DOM #}
     <input type="hidden" id="profile" value={{resultResearch.0.id}}>
     <input type="hidden" id="pseudo" value={{resultResearch.0.pseudo}}>

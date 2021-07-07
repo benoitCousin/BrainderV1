@@ -1,7 +1,7 @@
 body
 {
  /*background: no-repeat fixed center center/100% url('../images/couple.jpg');*/
- background-color: black;
+ background-color: lightgray;
  height: 100%;
  width: 100%;
  padding:0;
@@ -411,7 +411,7 @@ font-family: verdana;
 /* /////// end contactForm.html.twig ////// */
 
 .form-check{
-  color: #F9F8F8;
+  color: black;
 }
 /* /////// start profilesList.html.twig /////// */
 
@@ -812,4 +812,28 @@ font-style: italic;
 input[type=checkbox]:checked + label {
 color: #f00;
 font-style: normal;
+}
+
+/*=========================================================
+*
+*===================== avatar CSS ===================
+*
+==========================================================*/
+
+
+.avatar
+{
+    width: 120px;
+    height: 120px;
+    margin: 0.5em;
+    border-radius:45px;
+}
+.boxAvatar
+{
+  display: flex;
+  flex-direction: row;
+}
+.avatarList
+{
+  border-radius:15px;
 }

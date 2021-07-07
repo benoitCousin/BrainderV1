@@ -6,6 +6,9 @@
 
 
   <div class = "cadre">
+          <video autoplay muted loop id="myVideo">
+            <source src="../assets/video/fondhome.mp4" type="video/mp4">
+          </video> 
          <div class="container">
              <h1>Inscriptions</h1>
 
@@ -19,36 +22,36 @@
 			 <form method="POST" action="create">
                  <div class="form-row">
                      <div class="col-md-4 mb-3">
-                         <label class="inscriptionLabel" for="Firstname">Nom:</label>
+                         <label class="inscriptionLabel" for="Firstname"></label>
                          <input type="text" class="form-control" id="Firstname"name="Firstname" placeholder="Nom" required>
                        <br><br>
                      </div>
                      <div class="col-md-4 mb-3">
-                         <label class="inscriptionLabel" for="Lastname">Prénom:</label>
+                         <label class="inscriptionLabel" for="Lastname"></label>
                          <input type="text" class="form-control" id="Lastname" name="Lastname" placeholder="Prenom" required>
                    <br><br>
                      </div>
                      <div class="col-md-4 mb-3">
-                    	<label class="inscriptionLabel" for="birthday">Veuillez saisir votre date de naissance:</label>
+                    	<label class="inscriptionLabel" for="birthday"></label>
 							<input type="date" id="birthday" name="birthday"required>
                          <br><br>
                  </div>
                  <div class="required">
 
-						<label class="inscriptionLabel" for="pswd">Mot de passe:</label>
+						<label class="inscriptionLabel" for="pswd"></label>
 						<input type='password' id='L3' name="pswd"placeholder="Mot de passe (6 caract.)" minlength="6" required><br><br>
 
-						<label class="inscriptionLabel" for="pswd">Confirmer mdp:</label>
-						<input type="password"  placeholder="Mots de passe"
+						<label class="inscriptionLabel" for="pswd"></label>
+						<input type="password"  placeholder="confirmez votre mot de passe"
 					  onfocus="validatemotdepasse(document.getElementById('L3'), this);" 
 					  oninput="validatemotdepasse(document.getElementById('L3'), this);">
 				  </div><br><br>
 				 <div class="required">
-						<label class="inscriptionLabel" for="mail">Email:</label>
+						<label class="inscriptionLabel" for="mail"></label>
 						<input type='email' id='p1'name="mail" placeholder="Email" required><br><br>
 
-						<label class="inscriptionLabel" for="email">Confirmer Email:</label>
-						<input type='email'id='p2' placeholder="Email"
+						<label class="inscriptionLabel" for="email"></label>
+						<input type='email'id='p2' placeholder="Confirmez votre email"
 						  onfocus="validateMail(document.getElementById('p1'), this);" 
 						  oninput="validateMail(document.getElementById('p1'), this);">
 					  </div><br><br>
